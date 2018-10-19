@@ -20,6 +20,7 @@ export const OMNIGETWALLETADDRESSBALANCES_FAILED = "OMNIGETWALLETADDRESSBALANCES
 export const getwalletaddressbalances = () =>async (dispatch, getState) => {
 
   try {
+    const { omniService } = getState().rpc; 
     const walletAddressBalances=await omni_getwalletaddressbalances(omniService)
 
     console.log(walletAddressBalances,'=================walletAddressBalanceswalletAddressBalances========================================')

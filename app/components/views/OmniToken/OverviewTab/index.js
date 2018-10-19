@@ -6,12 +6,13 @@ const OverviewPage = ( ) => (
     <Aux>
         <div className="tab-card">
             <div className="overview-transactions-ticket-wrapper">
-                <div className="recent-transactions omni-overviewTab-asstesList">
-                     <AsssetsList/>
-                </div>
-                <div className="ticket-activity clearfix omni-overviewTab-valueCombination">
+                <AsssetsList/>   
+                {/* <div className="recent-transactions omni-overviewTab-asstesList">
+                     
+                </div> */}
+                {/* <div className="ticket-activity clearfix omni-overviewTab-valueCombination">
                     <ValueCombination />
-                </div>
+                </div> */}
             </div>
         </div>
     </Aux>

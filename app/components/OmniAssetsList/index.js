@@ -90,17 +90,20 @@ const listData=[
     render() {  
         const {walletAssetsBalances}  = this.props;
 
-        const row=walletAssetsBalances.map(item=>{
-            return <AssetsRow key={item.name} {
-                ...{ 
-                    data:item,
-                    onShowAssetsItem:this.onShowAssetsItem,
-                    onhideAssetsItem:this.onhideAssetsItem,
-                    isShowAssetsItem:this.state.assetsItemNum==item.id,
-                    assetsItemDetails:item.details
-                }
-            }/>
-        })
+        let row=null;
+        if(walletAssetsBalances){
+             row = walletAssetsBalances.map(item=>{
+                return <AssetsRow key={item.name} {
+                    ...{ 
+                        data:item,
+                        onShowAssetsItem:this.onShowAssetsItem,
+                        onhideAssetsItem:this.onhideAssetsItem,
+                        isShowAssetsItem:this.state.assetsItemNum==item.id,
+                        assetsItemDetails:item.details
+                    }
+                }/>
+            })
+        }
 
         return row
     }
