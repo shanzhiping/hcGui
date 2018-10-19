@@ -1,0 +1,130 @@
+////////////////////////////////////
+//  Global variables
+////////////////////////////////////
+
+@white: #ffffff;
+@green: #64a62e;
+@blue: #68d7ff;
+@darkBlue: #017999;
+@purple: #8539dd;
+@lightPurple: #6b26b9;
+@grey: #9da5b5;
+@darkGrey: #220f2b;
+@dark: #220f2a;
+
+@material-ui-bg: #61308C;
+@material-ui-bg2: #E21651;
+
+@error-text-color: #fd714b;
+@sidebar-width: 296px;
+@disabled-background-color: #e7eaed;
+@disabled-color: #8997a5;
+@enabled-color: #596d82;
+@disabled-box-shadow-color: rgba(0, 0, 0, 0.1);
+@disabled-box-shadow: 0px 1px 1px @disabled-box-shadow-color;
+@input-color: @white;
+@input-color-alt: @white;
+@link-color: @blue;
+@link-hover-color: @white;
+@accent-color: @green;
+@content-color: linear-gradient(45deg, #8735d1, #a85eea);
+
+@font-family-monospaced: "JuraRegular", 'PingFangSC-Regular', 'Helvetica', "Inconsolata", monospace, "Microsoft Yahei";
+@font-family-regular: "JuraRegular", 'PingFangSC-Regular', 'Helvetica', "Source Sans Pro", sans-serif, "Microsoft Yahei";
+@font-family-JuraRegular: "JuraRegular", 'PingFangSC-Regular', 'Helvetica', "Source Sans Pro", sans-serif, "Microsoft Yahei";
+@font-family-JuraMedium: "JuraMedium", 'PingFangSC-Regular', 'Helvetica', "Source Sans Pro", sans-serif, "Microsoft Yahei";
+@font-family-JuraBold: "JuraBold", 'PingFangSC-Regular', 'Helvetica', "Source Sans Pro", sans-serif, "Microsoft Yahei";
+@font-family-JuraLight: "JuraLight", 'PingFangSC-Regular', 'Helvetica', "Source Sans Pro", sans-serif, "Microsoft Yahei";
+@font-family-JuraSemiBold: "JuraSemiBold", 'PingFangSC-Regular', 'Helvetica', "Source Sans Pro", sans-serif, "Microsoft Yahei";
+
+@input-color-disabled: #dadfe2;
+@input-color-default: @white;
+@input-color-hovered: @darkGrey;
+@input-color-focused: @darkGrey;
+@stroke-color-default: @white;
+@stroke-color-hovered: @white;
+@stroke-color-focused: @white;
+
+@background-hovered: @white;
+
+@input-transition-time: 230ms;
+@input-timing-function: ease-in-out;
+
+////////////////////////////////////
+//  Global mixin classes
+////////////////////////////////////
+
+// Usage:
+//
+//  <div className="container">
+//      <div className="left">...</div>
+//      <div className="right">...</div>
+//  </div>
+//
+//  .container {
+//      .clearfloat-mixin;
+//  }
+//
+//  .left {
+//      float: left;
+//  }
+//  .right {
+//      float: right;
+//  }
+.clearfloat-mixin {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.modal-section {
+  padding: 20px;
+  background-color: @grey;
+  box-shadow: 0px 13px 21px rgba(0, 0, 0, 0.21);
+}
+
+// MixIn to be used on UI elements to be displayed side-by-side
+// Adds a minimial margin to the right for the spacing of the next element
+.inline-block-mixin {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.5em;
+}
+
+////////////////////////////////////
+//  Global classes
+////////////////////////////////////
+
+.error {
+  color: #fd714b;
+}
+
+////////////////////////////////////
+//  Animation curvers
+////////////////////////////////////
+
+// Check out standard curves in http://easings.net
+@easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+
+
+input {
+  font-family: @font-family-JuraRegular;
+}
+* {
+  box-sizing: border-box;
+}
+.clear {
+	display : block;
+	height  : 0;
+	overflow: hidden;
+	clear   : both;
+}
+.clearfix {
+  &:after {
+    content: '\20';
+    display: block;
+    height : 0;
+    clear  : both;
+    *zoom  : 1;
+  }
+}

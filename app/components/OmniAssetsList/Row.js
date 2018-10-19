@@ -1,0 +1,51 @@
+ 
+import {Card } from 'material-ui/Card';
+import React from "react"
+import { Balance, TransitionMotionWrapper } from "shared";
+import Details from './details'
+import "style/OmniAssetsList.less";
+
+
+const row=({ 
+    data,
+    onShowAssetsItem,
+    onhideAssetsItem,
+    isShowAssetsItem,
+    assetsItemDetails
+})=>(
+        <div  className={
+            isShowAssetsItem?"account-row-long":"account-row-short"
+        } >
+        <div  className={
+                isShowAssetsItem?"account-row-details-top":"account-row"
+            } 
+            onClick={
+                isShowAssetsItem
+                  ? onhideAssetsItem
+                  : () => onShowAssetsItem(data.name)
+              }
+        >
+        <div className="account-row-top-top">
+            <div className="account-row-wallet-icon" />
+            <div className="account-row-top-account-name">{data.name}<span></span></div>
+            {/* 暂时没有 兑换成$ 数据 */}
+            {/* <div className="account-row-top-account-funds assets-row-top-account-funds"> 
+                <span>${data.balance}</span>
+            </div> */}
+            <div className="account-row-top-account-funds assets-row-top-account-funds">
+                <Balance amount={data.balance} /> 
+            </div>
+            
+        </div>
+        </div>
+        {
+            isShowAssetsItem?(<Details { ...data.addressData } />) :null
+        }
+        
+    </div>
+    )
+
+
+    export default row;
+
+ 
