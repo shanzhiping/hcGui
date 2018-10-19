@@ -15,4 +15,5 @@ app/i18n/extracted/app
 /*.node
 /app/yarn.lock
 /yarn.lock
+/package-lock.json
 app/modules/
