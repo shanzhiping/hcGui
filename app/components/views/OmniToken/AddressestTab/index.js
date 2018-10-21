@@ -1,5 +1,14 @@
+ 
+import OmniAddressList from 'OmniAddressList';
 const AddressestPage = ( ) => (
-    <div>Omni AddressestPage</div>
+    
+    <Aux> 
+    <div className="tab-card">
+            <div className="overview-transactions-ticket-wrapper">
+                    <OmniAddressList />
+            </div>
+        </div>
+</Aux>
  );
  
  export default AddressestPage;
