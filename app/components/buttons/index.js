@@ -21,7 +21,7 @@ export { ModalButton, AutoBuyerSwitch, KeyBlueButton, DangerButton, NetworkSwitc
  ***************************************************/
 import {
   InfoModal, PassphraseModal, ChangePassphraseModal,
-  ConfirmModal
+  ConfirmModal,QRCodeModel
 } from "modals";
 
 // mbb = ModalButtonBuilder (func to build a functional ModalButton component
@@ -46,3 +46,4 @@ export const PassphraseModalButton = mbb(null, PassphraseModal, KeyBlueButton);
 export const PassphraseModalSwitch = mbb(null, PassphraseModal, AutoBuyerSwitch);
 export const RemoveStakePoolButton = mbb(null, ConfirmModal, DangerButton);
 export const RemoveWalletButton = mbb(null, ConfirmModal, KeyDestructionButton);
+export const QRCodeModalButton = mbb("qrcode",QRCodeModel)

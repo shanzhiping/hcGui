@@ -11,7 +11,8 @@ const row=({
     onShowAssetsItem,
     onhideAssetsItem,
     isShowAssetsItem,
-    assetsItemDetails
+    onMenuChanged,
+    menuItemDatas
 })=>(
         <div  className={
             isShowAssetsItem?"account-row-long":"account-row-short"
@@ -39,7 +40,10 @@ const row=({
         </div>
         </div>
         {
-            isShowAssetsItem?(<Details { ...data.addressData } />) :null
+            isShowAssetsItem?(<Details  {...{addressData:data.addressData,
+                onMenuChanged,
+                menuItemDatas
+            }} />) :null
         }
         
     </div>
