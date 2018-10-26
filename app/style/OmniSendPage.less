@@ -1,0 +1,34 @@
+@import (reference) "./main.less";
+@import (reference) "./Icons.less";
+
+.omni-sendForm{
+    background: @material-ui-bg;
+    border-radius: 10px; 
+    display: flex;
+    margin-bottom: 20px;
+    .sendForm-panel{
+        flex: 1;
+        margin: 20px;
+        >div:first-child{
+            margin: 5px 0px;
+            color: @white;
+        }
+    }
+}
+
+.omni-send-button-area{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0px 20px;
+    >:first-child{
+        p{
+            margin:5px 0px;
+            color: #7d6986; 
+        } 
+        .omni-send-error{
+            color:red;
+        }
+    } 
+}

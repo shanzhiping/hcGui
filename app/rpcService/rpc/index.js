@@ -28,6 +28,7 @@ export const getOmnitService = (isTestNet,host) => (method,params=[],methodType=
             res.setEncoding('utf8');    
             res.on('data', (chunk) => {  
                 const data = JSON.parse(chunk); 
+                console.log(`wallet rpc request method:${method}`,params,data);    
                 if(data.error){
                     reject(data.error.message) 
                 } else{
@@ -35,7 +36,7 @@ export const getOmnitService = (isTestNet,host) => (method,params=[],methodType=
                 }     
             });    
             res.on('end', () => {     
-                console.log('No more data in response.');    
+                console.log('https.request end');    
             }); 
         });  
         req.on('error', (e) => {   

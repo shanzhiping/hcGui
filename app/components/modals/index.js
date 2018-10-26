@@ -6,7 +6,8 @@ export { default as VerifyMessageInfoModalContent } from "./VerifyMessageInfoMod
 export { default as TicketAutoBuyerInfoModalContent } from "./TicketAutoBuyerInfoModalContent";
 export { default as SeedInfoModalContent } from "./SeedInfoModalContent";
 export { default as PassphraseInfoModalContent } from "./PassphraseInfoModalContent";
-export { default as QRCodeModalContent} from './qrCodeModalContent'
+export { default as QRCodeModalContent} from './QRCodeModalContent';
+export {default as PubKeyModalContent} from './PubKeyModalContent'
 
 export { default as ImportScriptModal } from "./ImportScriptModal";
 export { default as AddAccountModal } from "./AddAccountModal";
@@ -15,4 +16,4 @@ export { default as InfoModal } from "./InfoModal/Modal";
 export { default as PassphraseModal } from "./PassphraseModal/PassphraseModal";
 export { default as ConfirmModal } from "./ConfirmModal";
 export { default as SeedCopyConfirmModal } from "./SeedCopyConfirmModal";
-export { default as QRCodeModel} from './qrCodeModal'
+export { default as QRCodeModel} from './QRCodeModal'

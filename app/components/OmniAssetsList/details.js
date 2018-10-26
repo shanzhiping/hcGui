@@ -1,15 +1,12 @@
  
-import {Card } from 'material-ui/Card';
-import React from "react"   
-import OptionsButton from './optionsButton'
-import QCCodeButton from '../OmniAddressList/qrCodeButton'
+import OptionsButton from 'buttons/OptionsButton'
+import QRCodeButton from 'buttons/QRCodeButton';
 
 const details=({  
     addressData,
     menuItemDatas,
     onMenuChanged
-       })=>{
-           console.log(addressData)
+       })=>{ 
         return (
         <div className="Omni-asstesList-row-table">
             <div className="asstesList-table-row asstesList-table-header">
@@ -22,12 +19,12 @@ const details=({
                 addressData.map(item=>{
                     return  <div key={item.address} className="asstesList-table-row asstesList-table-body">
                                 <div>
-                                    {item.address}<QCCodeButton addr={item.address}/>
+                                    {item.address}<QRCodeButton addr={item.address}/>
                                 </div>
                                 <div>{item.balance}</div>
                                 {/* <div>${item.currentValue}</div> */}
                                 <div>
-                                   <OptionsButton btnClass="address-operation" { ...{onMenuChanged:onMenuChanged,
+                                   <OptionsButton btnClass="address-operation" { ...{onMenuChanged:onMenuChanged(item.address),
                                    menuItemDatas:menuItemDatas,
                                    btnText:'操作'
                                 } }/>

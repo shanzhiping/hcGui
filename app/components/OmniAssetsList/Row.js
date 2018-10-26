@@ -34,7 +34,8 @@ const row=({
                 <span>${data.balance}</span>
             </div> */}
             <div className="account-row-top-account-funds assets-row-top-account-funds">
-                <Balance amount={data.balance} /> 
+                {/* <Balance amount={data.balance} />  */}
+                {data.balance}
             </div>
             
         </div>

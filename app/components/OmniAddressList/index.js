@@ -1,15 +1,15 @@
- 
-import React from "react" ;
-import Row from "./Row" ;
+import Row from "./row" ;
+import PubKeyModal from './publKeyModal';
+import SignMessageModal from './signMessageModal'
 import {omniAssetsList} from "connectors";
 
 const menuItemDatas=[{
-    value:1,
-    text:'从钱包中移除地址'
+    value:'pubKey',
+    text:'公钥'
 },
 {
-  value:2,
-  text:'从钱包中移除地址2'
+  value:'signMessage',
+  text:'Sign Message'
 }]
 
 
@@ -17,33 +17,64 @@ const menuItemDatas=[{
   
     constructor(props) {
         super(props); 
+        this.state={
+            showPubKeyModal:false,
+            showSignMessageModal:false,
+            addr:'',
+            pubKey:''
+        }
     }
 
-    onMenuChanged=(value)=>{
-        console.log(value,'------onMenuChanged---------------')
+    onCancelSignMessageModal=()=>{
+        this.setState({showSignMessageModal:false})
     }
+    onCancelPubKeyModal=()=>{
+        this.setState({showPubKeyModal:false})
+    }
+
+    onMenuChanged= address => value =>{ 
+        if(value==='pubKey'){
+            this.props.validateAddress(address).then(data=>{  
+                this.setState({
+                    showPubKeyModal:true,
+                    addr:address,
+                    pubKey:this.props.validateAddressResponse.getPubKey_asB64()
+                })
+            });
+        }else if(value==='signMessage'){
+            this.props.validateAddress(address).then(data=>{  
+                this.setState({
+                    showSignMessageModal:true,
+                    addr:address
+                })
+            });
+        }
+        
+    } 
     render() {  
-        // const {walletAssetsBalances}  = this.props;
+        const {walletAddressBalances}  = this.props;
+        const {showSignMessageModal,showPubKeyModal,addr,pubKey} =this.state;
 
-        // let row=null;
-        // if(walletAssetsBalances){
-        //      row = walletAssetsBalances.map(item=>{
-        //         return <AssetsRow key={item.name} {
-        //             ...{ 
-        //                 data:item,
-        //                 onShowAssetsItem:this.onShowAssetsItem,
-        //                 onhideAssetsItem:this.onhideAssetsItem,
-        //                 isShowAssetsItem:this.state.assetsItemNum==item.id,
-        //                 assetsItemDetails:item.details
-        //             }
-        //         }/>
-        //     })
-        // }else{
-        //     row = <div>没有数据</div>
-        // } 
-        return [<Row key='1' {...{ onMenuChanged:this.onMenuChanged,
-            menuItemDatas:menuItemDatas }}/>,<Row key='2'  {...{ onMenuChanged:this.onMenuChanged,
-                menuItemDatas:menuItemDatas }}/>]
+        let row=null;
+        if(walletAddressBalances){
+             row =<div> 
+                            {walletAddressBalances.map(item=>{
+                            return <Row key={item.address} {
+                                ...{ 
+                                    data:item,
+                                    onMenuChanged:this.onMenuChanged(item.address),
+                                    menuItemDatas:menuItemDatas
+                                }
+                            }/>
+                        })
+                    }
+                    <SignMessageModal  show={showSignMessageModal} onCancelModal={this.onCancelSignMessageModal} address={addr} />
+                    <PubKeyModal  show={showPubKeyModal} onCancelModal={this.onCancelPubKeyModal} addr={addr} pubKey={pubKey}/>
+                    </div>
+        }else{
+            row = <div>没有数据</div>
+        } 
+        return row
     }
 }
 

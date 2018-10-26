@@ -30,19 +30,19 @@ export default class OptionsButtion extends React.PureComponent{
         const { menuOpen } = this.state; 
         const {btnClass,onMenuChanged,menuItemDatas,btnText} = this.props; 
 
+        let component=menuItemDatas ? <IconMenu 
+                                            onChange={(event, value)=>{ onMenuChanged(value) }}
+                                            onRequestChange={this.onMenuRequestChange}
+                                            open={menuOpen}
+                                            iconButtonElement={
+                                                <div className={btnClass}>{btnText}</div>
+                                            }
+                                            >
+                                            {this._menuItemComponent(menuItemDatas)} 
+                                        </IconMenu>:null;
 
-        return (
-            <IconMenu
-                className={"eye-filter-menu " + (menuOpen ? "menu-open" : "") }
-                onChange={(event, value)=>{ this.props.onMenuChanged(value) }}
-                onRequestChange={this.onMenuRequestChange}
-                open={menuOpen}
-                iconButtonElement={
-                    <div className={btnClass}>{btnText}</div>
-                }
-            >
-            {this._menuItemComponent(menuItemDatas)} 
-            </IconMenu>
-            )
+
+
+        return component
     }
 }

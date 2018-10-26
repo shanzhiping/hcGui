@@ -37,5 +37,7 @@ export { default as walletStartup } from "./walletStartup";
 export { default as balanceHome } from "./balanceHome";
 export { default as ticketHome } from "./ticketHome";
 export { default as transactionsHome } from "./transactionsHome";
-export { default as omniAssetsList} from "./omniAssetsList"
+export { default as omniAssetsList} from "./omniAssetsList";
+export { default as omniSend} from "./omniSend";
+export { default as omniHistory} from "./omniHistory";
 

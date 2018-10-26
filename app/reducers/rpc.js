@@ -1,5 +1,6 @@
 import {
-    GETOMNISERVICE_ATTEMPT,GETOMNISERVICE_SUCCESS,GETOMNISERVICE_FAILED,OMNIGETWALLETADDRESSBALANCES_SUCCESS,OMNIGETWALLETADDRESSBALANCES_FAILED 
+    GETOMNISERVICE_ATTEMPT,GETOMNISERVICE_SUCCESS,GETOMNISERVICE_FAILED,OMNIGETWALLETADDRESSBALANCES_SUCCESS,OMNIGETWALLETADDRESSBALANCES_FAILED
+    ,OMNILISTPROPERTIES_SUCCESS
   } from "../actions/OmniActions";
 
 export default function rpc(state = {}, action) {
@@ -26,7 +27,7 @@ export default function rpc(state = {}, action) {
         case OMNIGETWALLETADDRESSBALANCES_SUCCESS:
             return {
                 ...state,
-                walletAddressBalances:action.walletaddressbalances,
+                walletAddressBalances:action.walletAddressBalances,
                 walletAssetsBalances:action.walletAssetsBalances,
                 getWalletAddressBalancesRequestAttempt:false
             }
@@ -35,6 +36,12 @@ export default function rpc(state = {}, action) {
                 ...state,
                 getWalletAddressBalancesRequestError: String(action.error),
                 getWalletAddressBalancesRequestAttempt:true
+            }
+        case OMNILISTPROPERTIES_SUCCESS:
+            return{
+                ...state,
+                listproperties:action.listproperties, 
+                listpropertiesRequestAttempt:false
             }
         default:
             return state; 

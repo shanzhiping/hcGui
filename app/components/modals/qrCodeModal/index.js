@@ -10,7 +10,7 @@ const propTypes = {
   onCancelModal: PropTypes.func.isRequired
 };
 
-const InfoModal = ({modalTitle, modalContent, show, onCancelModal}) => (
+const QRCodeModal = ({modalTitle, modalContent, show, onCancelModal}) => (
   <Modal className="qrcode-modal" {...{show}}>
     <div className="qrcode-modal-header">
       <div className="qrcode-modal-header-title">
@@ -26,6 +26,6 @@ const InfoModal = ({modalTitle, modalContent, show, onCancelModal}) => (
   </Modal>
 );
 
-InfoModal.propTypes = propTypes;
+QRCodeModal.propTypes = propTypes;
 
-export default InfoModal;
+export default QRCodeModal;

@@ -1,9 +1,9 @@
- import React from 'react';
 import OmniAddressList from 'OmniAddressList';
 import OperationBotton from './operationBotton';
 import AsssetsList from 'OmniAssetsList';
 import "style/OmniOverviewTab.less"
-import OmniAssetsList from '../../../OmniAssetsList';
+import OmniAssetsList from '../../../OmniAssetsList'; 
+import { receive } from "connectors";
 
 const browseTypes=[{
         value:'address',
@@ -13,6 +13,14 @@ const browseTypes=[{
       value:'asstes',
       text:'钱包'
     }]
+
+    const createAddressTypes=[{
+            value:"newAddress",
+            text:"创建新钱包地址"
+    },{
+        value:"privateAddress",
+        text:"输入带私钥的地址"
+     }]
 
 class AddressestPage extends React.PureComponent { 
         constructor(props) {
@@ -29,6 +37,12 @@ class AddressestPage extends React.PureComponent {
                 })
                 this.setState({browseType:value,browseTypeText:obj.text});
          }
+         onCreateAddressTypesChanged=value=>{
+                if(value==="newAddress"){
+                        const { getNextAddressAttempt, account } = this.props; 
+                        getNextAddressAttempt(account.value,account.accountType);
+                }
+         }
         
         render(){
                 const {browseType,browseTypeText}=this.state;
@@ -36,7 +50,9 @@ class AddressestPage extends React.PureComponent {
                         <OperationBotton {...{
                                 browseTypes:browseTypes,
                                 onBrowseTypesChanged:this.onBrowseTypesChanged,
-                                browseTypeText:browseTypeText
+                                browseTypeText:browseTypeText,
+                                createAddressTypes,
+                                onCreateAddressTypesChanged:this.onCreateAddressTypesChanged,
                         }}/>  
                         {
                                 browseType==='address'?<OmniAddressList /> :<OmniAssetsList/>
@@ -45,4 +61,4 @@ class AddressestPage extends React.PureComponent {
                 </Aux>
         }
 }
-export default AddressestPage;
+export default receive(AddressestPage);
