@@ -38,64 +38,69 @@ import OmniAssetsIndex from './components/views/OmniToken/AssetsTab/Overview';
 import OmniAssetsIssue from './components/views/OmniToken/AssetsTab/Issue';
 import OmniAssetsManaged from './components/views/OmniToken/AssetsTab/Managed';
 import OmniAssetsCrowdsale from './components/views/OmniToken/AssetsTab/Crowdsale';
+import OmniHistoryPage from './components/views/OmniToken/HistoryTab/HistoryPage'
+import OmniHistoryDetail from './components/views/OmniToken/HistoryTab/detail'
 
 export default (
-  <Route     path="/"                           component={App}>
-    <IndexRoute                                 component={GetStartedPage}/>
-    <Route   path="transactions/history/:txHash" component={TransactionPage}  desc/>
-    <Route   path="home"                        component={HomePage}    noHeader balance>
-      <IndexRedirect to="balance"/>
-      <Route path="balance"                     component={BalanceTab}       balance    testNet/>
-      <Route path="tickets"                     component={TicketsTab}/>
-      <Route path="transactions"                component={TransactionsTab}/>
+  <Route path="/" component={App}>
+    <IndexRoute component={GetStartedPage} />
+    <Route path="transactions/history/:txHash" component={TransactionPage} desc />
+    <Route path="home" component={HomePage} noHeader balance>
+      <IndexRedirect to="balance" />
+      <Route path="balance" component={BalanceTab} balance testNet />
+      <Route path="tickets" component={TicketsTab} />
+      <Route path="transactions" component={TransactionsTab} />
     </Route>
-    <Route   path="accounts"                    component={AccountsPage}      desc/>
-    <Route   path="transactions"                component={TabbedPage}        tabDesc>
-      <IndexRedirect to="send"/>
-      <Route path="send"                        component={SendTab}           testNet/>
-      <Route path="receive"                     component={ReceiveTab}/>
-      <Route path="history"                     component={HistoryTab}        balance/>
+    <Route path="accounts" component={AccountsPage} desc />
+    <Route path="transactions" component={TabbedPage} tabDesc>
+      <IndexRedirect to="send" />
+      <Route path="send" component={SendTab} testNet />
+      <Route path="receive" component={ReceiveTab} />
+      <Route path="history" component={HistoryTab} balance />
     </Route>
-    <Route   path="tickets"                     component={TabbedPage}        desc ticketprice>
-      <IndexRedirect to="purchase"/>
-      <Route path="purchase"                    component={PurchaseTab}/>
-      <Route path="mytickets"                   component={MyTicketsTab}>
-        <IndexRoute                             component={MyTicketsOverview}/>
-        <Route path=":status"                   component={MyTicketsList}/>
+    <Route path="tickets" component={TabbedPage} desc ticketprice>
+      <IndexRedirect to="purchase" />
+      <Route path="purchase" component={PurchaseTab} />
+      <Route path="mytickets" component={MyTicketsTab}>
+        <IndexRoute component={MyTicketsOverview} />
+        <Route path=":status" component={MyTicketsList} />
       </Route>
-      <Route path="governance"                  component={GovernanceTab}/>
+      <Route path="governance" component={GovernanceTab} />
       {/* <Route path="statistics"                  component={StatisticsTab}/> */}
     </Route>
-    <Route   path="omni"                     component={TabbedPage}        desc omni>
-      <IndexRedirect to="overview"/>
-      <Route path="overview"                    component={OverviewTab}/>
-      <Route path="addressest"                   component={AddressestTab} />  
-      <Route path="assets"                  component={AssetsTab}>
-         <IndexRoute                             component={OmniAssetsIndex}/>
-         <Route path="crowdsale"                  component={OmniAssetsCrowdsale}/> 
-         <Route path="issue"                  component={OmniAssetsIssue}/> 
-         <Route path="managed"                  component={OmniAssetsManaged}/>  
+    <Route path="omni" component={TabbedPage} desc omni>
+      <IndexRedirect to="overview" />
+      <Route path="overview" component={OverviewTab} />
+      <Route path="addressest" component={AddressestTab} />
+      <Route path="assets" component={AssetsTab}>
+        <IndexRoute component={OmniAssetsIndex} />
+        <Route path="crowdsale" component={OmniAssetsCrowdsale} />
+        <Route path="issue" component={OmniAssetsIssue} />
+        <Route path="managed" component={OmniAssetsManaged} />
       </Route>
-      <Route path="history"                  component={OmniHistoryTab}/>
-      <Route path="send"                  component={OmniSendTab}/>
+      <Route path="history" component={OmniHistoryTab}>
+        <IndexRoute component={OmniHistoryPage} />
+        <Route path="detail/:id" component={OmniHistoryDetail} />
+      </Route>
+      <Route path="send" component={OmniSendTab} />
       {/* <Route path="statistics"                  component={StatisticsTab}/> */}
     </Route>
 
-    <Route   path="security"                    component={TabbedPage}        desc>
-      <IndexRedirect to="sign"/>
-      <Route path="sign"                        component={SignTab}/>
-      <Route path="verify"                      component={VerifyTab}/>
-      <Route path="validate"                    component={ValidateTab}/>
+    <Route path="security" component={TabbedPage} desc>
+      <IndexRedirect to="sign" />
+      <Route path="sign" component={SignTab} />
+      <Route path="verify" component={VerifyTab} />
+      <Route path="validate" component={ValidateTab} />
     </Route>
-    <Route   path="settings"                    component={SettingsPage}      desc/>
-    <Route   path="help"                        component={TabbedPage}        tabDesc>
-      <IndexRedirect to="links"/>
-      <Route path="links"                       component={LinksTab}/>
-      <Route path="logs"                        component={LogsTab}/>
+    <Route path="settings" component={SettingsPage} desc />
+    <Route path="help" component={TabbedPage} tabDesc>
+      <IndexRedirect to="links" />
+      <Route path="links" component={LinksTab} />
+      <Route path="logs" component={LogsTab} />
     </Route>
-    <Route   path="walletError"                 component={WalletError}       noIcon/>
-    <Route   path="error"                       component={ErrorScreen}       noIcon/>
-    <Route   path="invalidRPCVersion"           component={InvalidRPCVersion} noIcon/>
-    <Route   path="shutdown"                    component={ShutdownAppPage}/>
+    <Route path="walletError" component={WalletError} noIcon />
+    <Route path="error" component={ErrorScreen} noIcon />
+    <Route path="invalidRPCVersion" component={InvalidRPCVersion} noIcon />
+    <Route path="shutdown" component={ShutdownAppPage} />
   </Route>
 );

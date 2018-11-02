@@ -305,7 +305,7 @@ export function determineNeededBlocks() {
       .then(function (response) {
         const neededBlocks = response.data.node_height;
         wallet.log("info", `Determined needed block height as ${neededBlocks}`);
-        dispatch({ neededBlocks:40, type: NEEDED_BLOCKS_DETERMINED});
+        dispatch({ neededBlocks, type: NEEDED_BLOCKS_DETERMINED});
       })
       .catch(function (error) {
         console.log("Unable to obtain latest block number.", error);

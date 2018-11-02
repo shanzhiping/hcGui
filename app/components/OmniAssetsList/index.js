@@ -20,6 +20,10 @@ import {omniAssetsList} from "connectors";
         };
     }
 
+    componentDidMount=()=>{
+        this.props.getwalletaddressbalances();
+    }
+
      
     onShowAssetsItem=(itemNum)=>{
         this.setState({assetsItemNum:itemNum});

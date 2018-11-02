@@ -24,6 +24,10 @@ const menuItemDatas=[{
             pubKey:''
         }
     }
+    
+    componentDidMount=()=>{
+        this.props.getwalletaddressbalances();
+    }
 
     onCancelSignMessageModal=()=>{
         this.setState({showSignMessageModal:false})

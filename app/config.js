@@ -352,6 +352,6 @@ export const rpcOptions={
   jsonrpc:"1.0",
   id:1,
   port:function(isTestNet){
-    return isTestNet ? 12010 : 12010;
+    return isTestNet ? 12010 : 14010;
   }
 }
