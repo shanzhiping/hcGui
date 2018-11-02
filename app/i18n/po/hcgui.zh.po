@@ -1269,6 +1269,14 @@ msgctxt "getStarted.header.finalizingSetup.meta"
 msgid "Finalizing setup"
 msgstr "完成设置"
 
+#. [getStarted.body.finalizingSetup.meta]
+#. defaultMessage is:
+#. Initializing data, please be patient.
+#: app/i18n/extracted/app/components/views/GetStartedPage/FinalStartUp.json
+msgctxt "getStarted.body.finalizingSetup.meta"
+msgid "Initializing data, please be patient."
+msgstr "正在初始化数据，请耐心等候。"
+
 #. [agenda.card.finishedIndicator]
 #. defaultMessage is:
 #. Finished

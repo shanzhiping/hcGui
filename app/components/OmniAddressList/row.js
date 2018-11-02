@@ -1,9 +1,10 @@
   
 import React from "react";
-import Details from './details'
-import "style/OmniAssetsList.less"; 
+import Details from './details' 
 import QRCodeButton from 'buttons/QRCodeButton';
-import OptionsButton from 'buttons/OptionsButton'
+import OptionsButton from 'buttons/OptionsButton';
+
+import "style/OmniAssetsList.less"; 
 
 class row extends React.PureComponent {
     constructor(props) {

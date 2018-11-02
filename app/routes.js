@@ -34,6 +34,10 @@ import AddressestTab from './components/views/OmniToken/AddressestTab';
 import AssetsTab from './components/views/OmniToken/AssetsTab';
 import OmniSendTab from './components/views/OmniToken/SendTab';
 import OmniHistoryTab from './components/views/OmniToken/HistoryTab';
+import OmniAssetsIndex from './components/views/OmniToken/AssetsTab/Overview';
+import OmniAssetsIssue from './components/views/OmniToken/AssetsTab/Issue';
+import OmniAssetsManaged from './components/views/OmniToken/AssetsTab/Managed';
+import OmniAssetsCrowdsale from './components/views/OmniToken/AssetsTab/Crowdsale';
 
 export default (
   <Route     path="/"                           component={App}>
@@ -66,7 +70,12 @@ export default (
       <IndexRedirect to="overview"/>
       <Route path="overview"                    component={OverviewTab}/>
       <Route path="addressest"                   component={AddressestTab} />  
-      <Route path="assets"                  component={AssetsTab}/>
+      <Route path="assets"                  component={AssetsTab}>
+         <IndexRoute                             component={OmniAssetsIndex}/>
+         <Route path="crowdsale"                  component={OmniAssetsCrowdsale}/> 
+         <Route path="issue"                  component={OmniAssetsIssue}/> 
+         <Route path="managed"                  component={OmniAssetsManaged}/>  
+      </Route>
       <Route path="history"                  component={OmniHistoryTab}/>
       <Route path="send"                  component={OmniSendTab}/>
       {/* <Route path="statistics"                  component={StatisticsTab}/> */}

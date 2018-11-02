@@ -1,11 +1,8 @@
-const AssetsPage = ( ) => (
+const AssetsPage = ({children} ) => (
     <Aux>  
         <div className="tab-card"> 
-            <div>
-                我的资产页面
-            </div>
+             {children}
         </div>
     </Aux>
- );
- 
+ ); 
  export default AssetsPage;

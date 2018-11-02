@@ -27,7 +27,11 @@ class InputSelect extends React.Component {
         data:this.props.datas?this.props.datas[0]:{}
     };
   }
-
+  componentWillReceiveProps=(nextProps)=>{ 
+    if (nextProps.datas != this.props.datas) {
+      this.setState({data:nextProps.datas?nextProps.datas[0]:null});
+    }
+  }
   render() {
     const { formatMessage } = this.props.intl;
     const { className,datas,valueKey,labelKey } = this.props; 

@@ -1,7 +1,8 @@
 import React from "react";
 import IconMenu from 'material-ui/IconMenu';
-import MenuItem from 'material-ui/MenuItem';
-import { basename } from "path";
+import MenuItem from 'material-ui/MenuItem'; 
+
+import "style/OptionsButton.less"
 
 @autobind
 export default class OptionsButtion extends React.PureComponent{
@@ -30,12 +31,14 @@ export default class OptionsButtion extends React.PureComponent{
         const { menuOpen } = this.state; 
         const {btnClass,onMenuChanged,menuItemDatas,btnText} = this.props; 
 
+
+
         let component=menuItemDatas ? <IconMenu 
                                             onChange={(event, value)=>{ onMenuChanged(value) }}
                                             onRequestChange={this.onMenuRequestChange}
                                             open={menuOpen}
                                             iconButtonElement={
-                                                <div className={btnClass}>{btnText}</div>
+                                                <div className={btnClass?btnClass:"operation-butto"}>{btnText}</div>
                                             }
                                             >
                                             {this._menuItemComponent(menuItemDatas)} 

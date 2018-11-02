@@ -1,6 +1,8 @@
 import Screen from './screen';
+import HistoryList from './historyList';
+import "style/OmnihistoryPage.less";
 
-const HistoryTabPage = ({selectAddress,addressList,onAddressChanged})=>(
+const HistoryTabPage = ({selectAddress,addressList,onAddressChanged,tradeHistory})=>(
     <Aux>  
         <div className="tab-card"> 
             <Screen {...{
@@ -8,9 +10,11 @@ const HistoryTabPage = ({selectAddress,addressList,onAddressChanged})=>(
                 onAddressChanged,
                 selectAddress
             }}/>
-            <div className="omni-history-list">
-                开始做历史记录页面了
-            </div>
+            <HistoryList {
+                ...{
+                    tradeHistory
+                }
+            }/>
         </div>
     </Aux>
 )

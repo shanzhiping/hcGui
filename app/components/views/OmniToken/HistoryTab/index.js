@@ -9,12 +9,19 @@
             selectAddress:this.props.walletAddressBalances?this.props.walletAddressBalances[0].address:"————"
         }
     }
+    componentDidMount(){
+        this.props.gettradehistoryforaddress(this.state.selectAddress);
+    }
+    gettradehistoryforaddress(address){
+        this.props.gettradehistoryforaddress(address)
+    }
     onAddressChanged=(address)=>{
-
+        this.setState({selectAddress:address});
+        this.gettradehistoryforaddress(address);
     }
 
     render(){
-        const {walletAddressBalances} = this.props;
+        const {walletAddressBalances,tradeHistory} = this.props;
         const {selectAddress} =this.state;
         const addressList = walletAddressBalances.map(item=>{
             return {
@@ -28,7 +35,7 @@
                     addressList,
                     onAddressChanged:this.onAddressChanged,
                     selectAddress,
-
+                    tradeHistory
                 }
             }
         />;

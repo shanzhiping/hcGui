@@ -1,6 +1,6 @@
 import OptionsButton from 'buttons/OptionsButton';
 
-const OperationBotton = ({browseTypes,onBrowseTypesChanged,browseTypeText,createAddressTypes,onCreateAddressTypesChanged} ) => (
+const OperationBotton = ({browseTypes,onBrowseTypesChanged,browseTypeText,createAddressTypes,onCreateAddressTypesChanged,onSend} ) => (
     
      <div className="omni-address-operation-area">
          <div>我的钱包地址</div>
@@ -9,9 +9,7 @@ const OperationBotton = ({browseTypes,onBrowseTypesChanged,browseTypeText,create
                                    menuItemDatas:browseTypes,
                                    btnText:browseTypeText
                                 } }/>
-                                 <button className="send-operation-btn" onClick={()=>{
-                                     console.log('发送')
-                                 }}>发送</button>
+                                 <button className="send-operation-btn" onClick={onSend}>发送</button>
 
                                  <OptionsButton btnClass="createAddress-operation" { ...{onMenuChanged:onCreateAddressTypesChanged,
                                    menuItemDatas:createAddressTypes,

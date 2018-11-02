@@ -30,7 +30,7 @@ function getWalletServiceSuccess(walletService) {
     setTimeout(() => { dispatch(updateStakepoolPurchaseInformation()); }, 1000);
     setTimeout(() => { dispatch(getDecodeMessageServiceAttempt()); }, 1000);
 
-    var goHomeCb = () => {
+    var goHomeCb = () => { 
       setTimeout(() => { dispatch(pushHistory("/home")); }, 1000);
       setTimeout(() => { dispatch(showSidebarMenu()); }, 1000);
     };
@@ -41,7 +41,9 @@ function getWalletServiceSuccess(walletService) {
     const { walletCreateExisting, walletCreateResponse } = getState().walletLoader;
     const { fetchHeadersResponse } = getState().walletLoader;
     if (walletCreateExisting) {
-      setTimeout(() => { dispatch(rescanAttempt(0)).then(goHomeCb); }, 1000);
+      setTimeout(() => { dispatch(rescanAttempt(0)).then(()=>{
+        dispatch(getStartupWalletInfo()).then(goHomeCb);
+      }); }, 1000);
     } else if (walletCreateResponse == null && fetchHeadersResponse != null && fetchHeadersResponse.getFirstNewBlockHeight() !== 0) {
       setTimeout(() => { dispatch(rescanAttempt(fetchHeadersResponse.getFirstNewBlockHeight())).then(goHomeCb); }, 1000);
     } else {

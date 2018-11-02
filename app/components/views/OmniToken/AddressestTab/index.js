@@ -1,7 +1,7 @@
 import OmniAddressList from 'OmniAddressList';
 import OperationBotton from './operationBotton';
 import AsssetsList from 'OmniAssetsList';
-import "style/OmniOverviewTab.less"
+import "style/OmniOverviewTab.less";
 import OmniAssetsList from '../../../OmniAssetsList'; 
 import { receive } from "connectors";
 
@@ -43,6 +43,10 @@ class AddressestPage extends React.PureComponent {
                         getNextAddressAttempt(account.value,account.accountType);
                 }
          }
+
+         onSend=()=>{ 
+                this.props.router.push(`/omni/send`)
+         }
         
         render(){
                 const {browseType,browseTypeText}=this.state;
@@ -53,6 +57,7 @@ class AddressestPage extends React.PureComponent {
                                 browseTypeText:browseTypeText,
                                 createAddressTypes,
                                 onCreateAddressTypesChanged:this.onCreateAddressTypesChanged,
+                                onSend:this.onSend
                         }}/>  
                         {
                                 browseType==='address'?<OmniAddressList /> :<OmniAssetsList/>

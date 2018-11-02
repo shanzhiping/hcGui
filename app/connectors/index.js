@@ -40,4 +40,5 @@ export { default as transactionsHome } from "./transactionsHome";
 export { default as omniAssetsList} from "./omniAssetsList";
 export { default as omniSend} from "./omniSend";
 export { default as omniHistory} from "./omniHistory";
+export { default as omniAssetsForm} from "./omniAssetsForm"
 

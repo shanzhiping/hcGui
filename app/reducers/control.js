@@ -81,8 +81,7 @@ export default function control(state = {}, action) {
       rescanCall: null,
       rescanError: "",
       rescanRequest: null,
-      rescanRequestAttempt: false,
-      rescanResponse: null,
+      rescanRequestAttempt: false, 
     };
   case GETNEXTACCOUNT_ATTEMPT:
     return {...state,

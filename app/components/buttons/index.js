@@ -7,6 +7,7 @@ export { default as RescanCancelButton } from "./RescanCancelButton";
 export { default as TextToggle } from "./TextToggle";
 export { default as TicketsCogs } from "./TicketsCogs";
 export { default as TransactionLink } from "./TransactionLink";
+export {default as FormButton} from "./FormButton"
 
 import ModalButton from "./ModalButton";
 import KeyBlueButton from "./KeyBlueButton";

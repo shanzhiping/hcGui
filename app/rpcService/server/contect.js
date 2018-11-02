@@ -6,6 +6,7 @@
     send:"omni_send",
     listproperties:"omni_listproperties",
     gettransaction:"omni_gettransaction",
+    listtransactions:"omni_listtransactions",
     gettradehistoryforpair:"omni_gettradehistoryforpair",
     gettradehistoryforaddress:"omni_gettradehistoryforaddress"
  }

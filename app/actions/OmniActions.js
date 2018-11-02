@@ -1,7 +1,7 @@
 import * as sel from "selectors";
 import {getOmnitService} from '../rpcService/rpc';
 import {omni_getwalletbalances,omni_listproperties, omni_getinfo,omni_getwalletaddressbalances,omni_send,omni_gettransaction,omni_gettradehistoryforpair,
-  omni_gettradehistoryforaddress } from '../rpcService/server';
+  omni_gettradehistoryforaddress,omni_getCategories } from '../rpcService/server';
  
 //新增 Omni服务  存放于 rpc Store中
 export const GETOMNISERVICE_ATTEMPT = "GETOMNISERVICE_ATTEMPT";
@@ -86,12 +86,17 @@ export const gettransaction_func=(txid)=>async (dispatch,getState)=>{
   }
 }
 
+
+export const OMNIGETTRADEHISTORYFORADDRESS_SUCCESS = "OMNIGETTRADEHISTORYFORADDRESS_SUCCESS";
+export const OMNIGETTRADEHISTORYFORADDRESS_FAILED = "OMNIGETTRADEHISTORYFORADDRESS_FAILED";
 export const  gettradehistoryforaddress_func=(address)=>async (dispatch,getState)=>{
   try{
     const { omniService } = getState().rpc; 
     const data=await omni_gettradehistoryforaddress(omniService,{address}); 
+    dispatch({type:OMNIGETTRADEHISTORYFORADDRESS_SUCCESS,tradeHistory:data})
   }catch(error){ 
-    console.error(error,' gettradehistoryforaddress_func  error')
+    console.error(error,' gettradehistoryforaddress_func  error');
+    dispatch({type:OMNIGETTRADEHISTORYFORADDRESS_FAILED,error})
   }
 }
 
@@ -128,3 +133,6 @@ export const testOmni = () => async (dispatch, getState) => {
    
    
 }  
+export const getCategories=()=> async (dispatch, getState)=>{
+  return omni_getCategories();
+}
