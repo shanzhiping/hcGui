@@ -13,8 +13,8 @@ class SendPage extends React.Component {
 
   getInitialState(props) {
     return {
-      address:props.walletAssetsBalances?props.walletAssetsBalances[0].addressData[0]:null,
-      asset:props.walletAssetsBalances?props.walletAssetsBalances[0]:null, 
+      address:props.walletAssetsBalances && props.walletAssetsBalances.length>0?props.walletAssetsBalances[0].addressData[0]:null,
+      asset:props.walletAssetsBalances && props.walletAssetsBalances.length>0?props.walletAssetsBalances[0]:null, 
       destination: "", 
       amount: null
     };
@@ -74,10 +74,11 @@ class SendPage extends React.Component {
   }
   onSend=(privpass) =>{
     const { send_func,onAttemptSignTransaction,unsignedTransaction,nextAddressAccount } = this.props; 
-    const {address,destination,amount} =this.state; 
+    const {address,destination,amount,asset} =this.state;  
+    
     if (!privpass || !this.getIsValid()) return;
     onAttemptSignTransaction && onAttemptSignTransaction(privpass, unsignedTransaction);
-    send_func && nextAddressAccount && send_func({fromaddress:address.address,toaddress:destination,propertyid:address.propertyid,amount:amount});
+    send_func && nextAddressAccount && send_func({fromaddress:address.address,toaddress:destination,propertyid:asset.propertyid,amount:amount});
     this.onClearTransaction();
   }
 

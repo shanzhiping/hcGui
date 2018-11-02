@@ -31,9 +31,9 @@ export const getwalletaddressbalances_func = () =>async (dispatch, getState) => 
         data.balances.forEach(item => {
           if(walletAssetsBalances.has(item.name)){
             let itemData=walletAssetsBalances.get(item.name); 
-            itemData.balance =itemData.balance+item.balance;
-            itemData.addressData.push({
-              propertyid:item.propertyid,
+            itemData.balance =parseFloat(itemData.balance)+parseFloat(item.balance);
+            itemData.propertyid=item.propertyid;
+            itemData.addressData.push({ 
               address:data.address,
               balance:item.balance,
             })

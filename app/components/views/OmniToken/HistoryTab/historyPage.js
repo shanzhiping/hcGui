@@ -20,9 +20,9 @@
         this.gettradehistoryforaddress(address);
     }
 
-    onDetail=(id)=>{
-        console.log(id);
-        this.props.router.push("/history/detail/"+id);
+    onDetail=(txHash)=>{
+        console.log(txHash);
+        this.props.router.push("/omni/history/"+txHash);
     }
 
     render(){
