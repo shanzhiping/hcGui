@@ -28,7 +28,7 @@ const details=({
                                 <div>
                                    <OptionsButton btnClass="address-operation" { ...{onMenuChanged:onMenuChanged(item.address),
                                    menuItemDatas:menuItemDatas,
-                                   btnText:<T id="omni,asstes.operation" m="operation"/>
+                                   btnText:<T id="omni.asstes.operation" m="operation"/>
                                 } }/>
                                 </div>
                         </div>

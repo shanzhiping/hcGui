@@ -4881,7 +4881,7 @@ msgstr "字段名称"
 #. defaultMessage is:
 #. detailed information
 #: app/i18n/extracted/app/messages.json
-msgctxt "omni.history.detail.fieldName"
+msgctxt "omni.history.detail.fieldContent"
 msgid "detailed information"
 msgstr "详细信息"
 
@@ -4901,19 +4901,19 @@ msgctxt "omni,asstes.address"
 msgid "address"
 msgstr "地址"
 
-#. [omni,asstes.balance]
+#. [omni.asstes.balance]
 #. defaultMessage is:
 #. balance
 #: app/i18n/extracted/app/messages.json
-msgctxt "omni,asstes.balance"
+msgctxt "omni.asstes.balance"
 msgid "balance"
 msgstr "余额"
 
-#. [omni,asstes.operation]
+#. [omni.asstes.operation]
 #. defaultMessage is:
 #. operation
 #: app/i18n/extracted/app/messages.json
-msgctxt "omni,asstes.operation"
+msgctxt "omni.asstes.operation"
 msgid "operation"
 msgstr "操作"
 
