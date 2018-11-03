@@ -107,6 +107,9 @@ export const walletAddressBalances =  get(["rpc", "walletAddressBalances"]);
 export const walletAssetsBalances =  get(["rpc", "walletAssetsBalances"]);
 export const listproperties =  get(["rpc","listproperties"]);
 export const tradeHistory =  get(["rpc","tradeHistory"]);
+export const omniListTransactions=get(["rpc","ListTransactions"]);
+export const omniNoMoreTransactions=get(["rpc","noMoreTransactions"]);
+export const omniTransaction =get(["rpc","omniTransaction"]);
 
 export const balances = or(get(["grpc", "balances"]), () => []);
 export const walletService = get(["grpc", "walletService"]);

@@ -1,11 +1,12 @@
  
+ import { FormattedMessage as T } from "react-intl"; 
  const details=({  
             assetsDatas
        })=>(
         <div className="addressList-row-detail">
             <div className="addressList-row-detail-header">
-                    <div>资产</div>
-                    <div>余额</div> 
+                    <div><T id="omni.asstes.name" m="asstes"/></div>
+                    <div><T id="omni.asstes.balance" m="balance"/></div> 
             </div> 
             {
                 assetsDatas.map(item=>{

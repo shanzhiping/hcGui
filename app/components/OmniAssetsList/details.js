@@ -1,6 +1,8 @@
  
 import OptionsButton from 'buttons/OptionsButton'
-import QRCodeButton from 'buttons/QRCodeButton';
+import QRCodeButton from 'buttons/QRCodeButton'; 
+import { FormattedMessage as T } from "react-intl"; 
+
 
 const details=({  
     addressData,
@@ -10,10 +12,10 @@ const details=({
         return (
         <div className="Omni-asstesList-row-table">
             <div className="asstesList-table-row asstesList-table-header">
-                    <div>地址</div>
-                    <div>余额</div>
+                    <div><T id="omni,asstes.address" m="address"/></div>
+                    <div><T id="omni.asstes.balance" m="balance"/></div>
                     {/* <div>价值</div> */}
-                    <div>操作</div>
+                    <div><T id="omni.asstes.operation" m="operation"/></div>
             </div>
             {
                 addressData.map(item=>{
@@ -26,7 +28,7 @@ const details=({
                                 <div>
                                    <OptionsButton btnClass="address-operation" { ...{onMenuChanged:onMenuChanged(item.address),
                                    menuItemDatas:menuItemDatas,
-                                   btnText:'操作'
+                                   btnText:<T id="omni,asstes.operation" m="operation"/>
                                 } }/>
                                 </div>
                         </div>

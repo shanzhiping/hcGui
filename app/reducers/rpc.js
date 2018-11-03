@@ -1,7 +1,8 @@
 import {
     GETOMNISERVICE_ATTEMPT, GETOMNISERVICE_SUCCESS, GETOMNISERVICE_FAILED, OMNIGETWALLETADDRESSBALANCES_SUCCESS, OMNIGETWALLETADDRESSBALANCES_FAILED
-    , OMNILISTPROPERTIES_SUCCESS,OMNIGETTRADEHISTORYFORADDRESS_SUCCESS,OMNIGETTRADEHISTORYFORADDRESS_FAILED
-} from "../actions/OmniActions"; 
+    , OMNILISTPROPERTIES_SUCCESS, OMNIGETTRADEHISTORYFORADDRESS_SUCCESS, OMNIGETTRADEHISTORYFORADDRESS_FAILED, OMNILISTTRANSACTIONS_SUCCESS,
+    OMNILISTTRANSACTIONS_ATTEMPT, OMNILISTTRANSACTIONS_FAILED, OMNIGETTRADEHISTORY_SUCCESS, OMNIGETTRADEHISTORY_FAILED
+} from "../actions/OmniActions";
 
 export default function rpc(state = {}, action) {
     switch (action.type) {
@@ -43,7 +44,7 @@ export default function rpc(state = {}, action) {
                 listproperties: action.listproperties,
                 listpropertiesRequestAttempt: false
             }
-        case OMNIGETTRADEHISTORYFORADDRESS_SUCCESS:{
+        case OMNIGETTRADEHISTORYFORADDRESS_SUCCESS: {
             return {
                 ...state,
                 tradeHistory: action.tradeHistory,
@@ -51,11 +52,41 @@ export default function rpc(state = {}, action) {
             }
         }
         case OMNIGETTRADEHISTORYFORADDRESS_FAILED:
-        return {
-            ...state,
-            getTradeHistoryForAddressRequestError: String(action.error),
-            getTradeHistoryForAddressRequestAttempt: true
-        }
+            return {
+                ...state,
+                getTradeHistoryForAddressRequestError: String(action.error),
+                getTradeHistoryForAddressRequestAttempt: true
+            }
+        case OMNILISTTRANSACTIONS_ATTEMPT:
+            return {
+                ...state,
+                listtransactionsRequestAttempt: true
+            }
+        case OMNILISTTRANSACTIONS_SUCCESS:
+            return {
+                ...state,
+                ListTransactions: action.ListTransactions,
+                noMoreTransactions: action.noMoreTransactions,
+                listtransactionsRequestAttempt: false
+            }
+        case OMNILISTTRANSACTIONS_FAILED:
+            return {
+                ...state,
+                listtransactionsRequestError: String(action.error),
+                listtransactionsRequestAttempt: true
+            }
+        case OMNIGETTRADEHISTORY_SUCCESS:
+            return {
+                ...state,
+                omniTransaction: action.omniTransaction,
+                gettransactionsRequestAttempt: false
+            }
+        case OMNIGETTRADEHISTORY_FAILED:
+            return {
+                ...state,
+                gettransactionsRequestError: String(action.error),
+                gettransactionsRequestAttempt: true
+            }
         default:
             return state;
     }

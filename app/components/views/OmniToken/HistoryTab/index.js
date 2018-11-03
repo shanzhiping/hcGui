@@ -1,8 +1,7 @@
-const HistoryPage = ({children} ) => (
-    <Aux>  
-        <div className="tab-card"> 
-             {children}
-        </div>
+import "style/OmnihistoryPage.less";
+const HistoryPage = ({ children }) => (
+    <Aux> 
+        {children}
     </Aux>
- ); 
- export default HistoryPage;
+);
+export default HistoryPage;

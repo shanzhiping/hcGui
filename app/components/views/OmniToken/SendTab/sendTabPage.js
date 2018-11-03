@@ -4,6 +4,7 @@ import { AddressInput, InputSelect, FloatInput } from "inputs";
 import { PassphraseModalButton } from "buttons";
 import 'style/OmniSendPage.less';
 
+
 const messages = defineMessages({
     destinationAddrPlaceholder: {
         id: "send.destinationAddrPlaceholder",
@@ -36,7 +37,9 @@ const SendTabPage = ({
             <div className="tab-card">
                 <div className="omni-sendForm">
                     <div className="sendForm-panel">
-                        <div>选择货币</div>
+                        <div> 
+                            <T id="omni.send.field.choiceCurrency" m="Choice of currency"/>
+                        </div>
                         <div><InputSelect className="send-select-account-input" {...{
                             datas: assetsList,
                             onChange: onAssetsChange,
@@ -45,7 +48,9 @@ const SendTabPage = ({
                         }} /></div>
                     </div>
                     <div className="sendForm-panel">
-                        <div>发送地址</div>
+                        <div> 
+                        <T id="omni.send.field.sendAddress" m="Send address"/>
+                        </div>
                         <div><InputSelect className="send-select-account-input" {...{
                             datas: addressList,
                             onChange: onAddressChange,
@@ -56,7 +61,11 @@ const SendTabPage = ({
                 </div>
                 <div className="omni-sendForm">
                     <div className="sendForm-panel">
-                        <div>发送 {asset ? asset.name : ""} (有效的: {asset ? asset.name : ""} )</div>
+                        <div> 
+                        <T id="omni.send.field.sendAmount" m="Send {assetName} (Effective {assetName})"
+                        values={{ assetName: asset ? asset.name : "" }}
+                        />
+                        </div>
                         <div>
                             <FloatInput
                                 showErrors={!!amountError}
@@ -72,7 +81,7 @@ const SendTabPage = ({
                         </div>
                     </div>
                     <div className="sendForm-panel">
-                        <div>接收地址</div>
+                        <div><T id="omni.send.field.ReceivingAddress" m="Receiving address"/></div>
                         <div>
                             <AddressInput
                                 autoFocus={true}
@@ -92,9 +101,22 @@ const SendTabPage = ({
                     <div>
                         {/* <p>全部交易费用: 0.00025 HC </p> */}
 
-                        <p>从可用地址:  {address.balance} {asset ? asset.name : ""}</p>
+                        <p> 
+                        <T id="omni.send.tips.AvailableAddress" m="From available address: {balance} {assetName}"
+                        values={{
+                            balance:address?address.balance:0,
+                            assetName:asset ? asset.name : ""
+                        }}/>
+                        </p>
 
-                        {parseFloat(amount) > parseFloat(address.balance) ? <p className="omni-send-error"> 您的“发件人地址”没有足够的BTC完成此交易。请至少发送 {asset ? asset.name : ""}覆盖估计总交易成本。</p> : null}
+                        {parseFloat(amount) > parseFloat(address?address.balance:0) ? <p className="omni-send-error"> 
+                        
+                        <T id="omni.send.tips.errormassge" m="Your sender address does not have enough {assetName} to complete the transaction. Please send at least {balance}{assetName} coverage to estimate total transaction cost."
+                        values={{
+                            balance:address?address.balance:0,
+                            assetName:asset ? asset.name : ""
+                        }}/>
+                        </p> : null}
                     </div>
                     <div>
                         <PassphraseModalButton

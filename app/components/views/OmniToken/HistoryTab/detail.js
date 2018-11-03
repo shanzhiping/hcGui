@@ -1,47 +1,41 @@
-import "style/OptionsButton.less";
+
+import { omniHistory } from "connectors";
+import Screen from 'shared/screen';
+import { FormattedMessage as T } from "react-intl";
 
 class Detail extends React.PureComponent {
     constructor(props) {
         super(props);
     }
+
+
+    componentDidMount = () => {
+        this.props.gettransaction(this.props.routeParams.txid)
+    }
+
     render() {
-        return (<div>
-                <div>
-                    <button className="send-operation-btn" onClick={() => { }}>后退</button>
-                </div>
-                <div>
-                    核对交易
-                </div>
-                <div className="omni-history-list">
+        const { omniTransaction, router } = this.props;
+        const dataKeys=omniTransaction?Object.keys(omniTransaction):[]; 
+        return (
+            <div className="tab-card">
+                <Screen title={<T id="omni.history.detail.transaction" m="Check the transaction"/>}>
+                    <button className="send-operation-btn" onClick={() => { router.goBack() }}><T id="omni.history.detail.back" m="go back"/></button>
+                </Screen>
+
+                <div className="omni-history-list omni-history-detail">
                     <div className="omni-history-list-header">
-                        <div>字段名称</div>
-                        <div>详细信息</div>
+                        <div><T id="omni.history.detail.fieldName" m="field name"/></div>
+                        <div><T id="omni.history.detail.fieldContent" m="detailed information"/></div>
                     </div>
                     <div className="omni-history-list-body">
-                        <div>
-                            <div>asdfasdfasdf</div>
-                            <div>sadfasdfadfasfsdfdsfsfasfsfasd</div>
-                        </div>
-                        <div>
-                            <div>asdfasdfasdf</div>
-                            <div>sadfasdfadfasfsdfdsfsfasfsfasd</div>
-                        </div>
-                        <div>
-                            <div>asdfasdfasdf</div>
-                            <div>sadfasdfadfasfsdfdsfsfasfsfasd</div>
-                        </div>
-                        <div>
-                            <div>asdfasdfasdf</div>
-                            <div>sadfasdfadfasfsdfdsfsfasfsfasd</div>
-                        </div>
-                        <div>
-                            <div>asdfasdfasdf</div>
-                            <div>sadfasdfadfasfsdfdsfsfasfsfasd</div>
-                        </div>
-                        <div>
-                            <div>asdfasdfasdf</div>
-                            <div>sadfasdfadfasfsdfdsfsfasfsfasd</div>
-                        </div>
+                        {
+                            dataKeys.length>0 ? dataKeys.map(item => {
+                                return <div>
+                                    <div>{item}</div>
+                                    <div>{(omniTransaction[item] instanceof Array)?JSON.stringify(omniTransaction[item]):omniTransaction[item]}</div>
+                                </div>
+                            }) : null
+                        } 
                     </div>
                 </div>
             </div>
@@ -49,4 +43,4 @@ class Detail extends React.PureComponent {
     }
 }
 
-export default Detail;
+export default omniHistory(Detail);

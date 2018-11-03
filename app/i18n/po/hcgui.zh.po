@@ -4756,3 +4756,207 @@ msgstr "历史"
 msgctxt "omni.tab.send"
 msgid "Send"
 msgstr "发送"
+
+#. [omni.history.type]
+#. defaultMessage is:
+#. type
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.type"
+msgid "type"
+msgstr "类型"
+
+#. [omni.history.amount]
+#. defaultMessage is:
+#. amount
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.amount"
+msgid "amount"
+msgstr "数量"
+
+#. [omni.history.currency]
+#. defaultMessage is:
+#. name
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.currency"
+msgid "name"
+msgstr "货币"
+
+#. [omni.history.blockTime]
+#. defaultMessage is:
+#. blockTime
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.blockTime"
+msgid "blockTime"
+msgstr "交易时间"
+
+#. [omni.wallet.selected.address]
+#. defaultMessage is:
+#. address
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.wallet.selected.address"
+msgid "address"
+msgstr "钱包完整记录"
+
+#. [omni.screenTitle.historicalRecords]
+#. defaultMessage is:
+#. Historical Records
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.screenTitle.historicalRecords"
+msgid "Historical Records"
+msgstr "历史纪录"
+
+#. [omni.Ecosystem]
+#. defaultMessage is:
+#. Ecosystem
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.Ecosystem"
+msgid "Ecosystem"
+msgstr "生态系统"
+
+#. [omni.send.field.choiceCurrency]
+#. defaultMessage is:
+#. Choice of currency
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.send.field.choiceCurrency"
+msgid "Choice of currency"
+msgstr "选择货币"
+
+#. [omni.send.field.sendAddress]
+#. defaultMessage is:
+#. Send address
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.send.field.sendAddress"
+msgid "Send address"
+msgstr "发送地址"
+
+#. [omni.send.field.sendAmount]
+#. defaultMessage is:
+#. Send {assetName} (Effective {assetName})
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.send.field.sendAmount"
+msgid "Send {assetName} (Effective {assetName})"
+msgstr "发送 {assetName} (有效的： {assetName})"
+
+#. [omni.send.field.ReceivingAddress]
+#. defaultMessage is:
+#. Receiving address
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.send.field.ReceivingAddress"
+msgid "Receiving address"
+msgstr "接受地址"
+
+#. [omni.send.tips.AvailableAddress]
+#. defaultMessage is:
+#. From available address: {balance} {assetName}
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.send.tips.AvailableAddress"
+msgid "From available address: {balance} {assetName}"
+msgstr "从可用地址： {balance} {assetName}"
+
+#. [omni.send.tips.errormassge]
+#. defaultMessage is:
+#. Your sender address does not have enough {assetName} to complete the transaction. Please send at least {balance}{assetName} coverage to estimate total transaction cost.
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.send.tips.errormassge"
+msgid "Your sender address does not have enough {assetName} to complete the transaction. Please send at least {balance}{assetName} coverage to estimate total transaction cost."
+msgstr "您的“发件人地址”没有足够的{assetName}完成此交易。请至少发送 {balance}{assetName} 覆盖估计总交易成本。"
+
+#. [omni.history.detail.back]
+#. defaultMessage is:
+#. go back
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.detail.back"
+msgid "go back"
+msgstr "返回"
+
+#. [omni.history.detail.fieldName]
+#. defaultMessage is:
+#. field name
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.detail.fieldName"
+msgid "field name"
+msgstr "字段名称"
+
+#. [omni.history.detail.fieldContent]
+#. defaultMessage is:
+#. detailed information
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.detail.fieldName"
+msgid "detailed information"
+msgstr "详细信息"
+
+#. [omni.history.detail.transaction]
+#. defaultMessage is:
+#. Check the transaction
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.history.detail.transaction"
+msgid "Check the transaction"
+msgstr "核对交易"
+
+#. [omni,asstes.address]
+#. defaultMessage is:
+#. address
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni,asstes.address"
+msgid "address"
+msgstr "地址"
+
+#. [omni,asstes.balance]
+#. defaultMessage is:
+#. balance
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni,asstes.balance"
+msgid "balance"
+msgstr "余额"
+
+#. [omni,asstes.operation]
+#. defaultMessage is:
+#. operation
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni,asstes.operation"
+msgid "operation"
+msgstr "操作"
+
+#. [omni.asstes.name]
+#. defaultMessage is:
+#. asstes
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.asstes.name"
+msgid "asstes"
+msgstr "资产"
+
+#. [omni.myWalletAddress]
+#. defaultMessage is:
+#. My Wallet Address
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myWalletAddress"
+msgid "My Wallet Address"
+msgstr "我的钱包地址"
+
+#. [omni.sendButton]
+#. defaultMessage is:
+#. Send
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.sendButton"
+msgid "Send"
+msgstr "发送"
+
+#. [omni.address.preview]
+#. defaultMessage is:
+#. preview
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.address.preview"
+msgid "preview"
+msgstr "预览"
+
+
+
+
+
+
+
+
+
+
+
+

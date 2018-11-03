@@ -28,8 +28,7 @@ const row=({
         >
         <div className="account-row-top-top">
             <div className="account-row-wallet-icon" />
-            <div className="account-row-top-account-name">{data.name}<span></span></div>
-            {/* 暂时没有 兑换成$ 数据 */}
+            <div className="account-row-top-account-name">{data.name}<span></span></div> 
             {/* <div className="account-row-top-account-funds assets-row-top-account-funds"> 
                 <span>${data.balance}</span>
             </div> */}

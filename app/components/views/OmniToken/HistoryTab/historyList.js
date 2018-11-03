@@ -1,8 +1,7 @@
 import Screen from './screen';
 import HistoryTable from './historyTable';
-import "style/OmnihistoryPage.less";
 
-const HistoryList = ({selectAddress,addressList,onAddressChanged,tradeHistory,onDetail})=>(
+const HistoryList = ({onProperyidToName,selectAddress,addressList,onAddressChanged,listTransactions,onDetail})=>(
     <div>
         <Screen {...{
                 addressList,
@@ -11,7 +10,8 @@ const HistoryList = ({selectAddress,addressList,onAddressChanged,tradeHistory,on
             }}/>
             <HistoryTable {
                 ...{
-                    tradeHistory,
+                    onProperyidToName,
+                    listTransactions,
                     onDetail
                 }
             }/>

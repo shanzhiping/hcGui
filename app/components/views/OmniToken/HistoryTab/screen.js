@@ -1,20 +1,28 @@
 
 import OptionsButton from 'buttons/OptionsButton';
+import Screen from 'shared/screen';
+import { FormattedMessage as T,injectIntl,defineMessages } from "react-intl"; 
+defineMessages({
+    selectedAddress:{
+        id:"omni.screenTitle.historicalRecords",
+        defaultMessage:"Historical Records"
+    }
+})
 
-const Screen = ({ addressList,
+const Index = ({ addressList,
     onAddressChanged,
-    selectAddress }) => (
+    selectAddress,intl }) => {
+        const title=intl.formatMessage({id:"omni.screenTitle.historicalRecords",defaultMessage:"Historical Records"})
+        return(
+        <Screen title={title}>
+             <T id="omni.wallet.selected.address" m="address"/>  <OptionsButton btnClass="browseType-operation" {...{
+                onMenuChanged: onAddressChanged,
+                menuItemDatas: addressList,
+                btnText: selectAddress
+            }} />
+        </Screen>
 
-        <div className="omni-address-operation-area">
-            <div>历史记录</div>
-            <div>
-                钱包完整记录  <OptionsButton btnClass="browseType-operation" {...{
-                    onMenuChanged: onAddressChanged,
-                    menuItemDatas: addressList,
-                    btnText: selectAddress
-                }} />
-            </div>
-        </div>
-    );
 
-export default Screen;
+    )};
+
+export default injectIntl(Index);

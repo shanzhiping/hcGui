@@ -80,7 +80,7 @@ export default (
       </Route>
       <Route path="history" component={OmniHistoryTab}>
         <IndexRoute component={OmniHistoryPage} />
-        <Route path=":txHash" component={OmniHistoryDetail} />
+        <Route path=":txid" component={OmniHistoryDetail} />
       </Route>
       <Route path="send" component={OmniSendTab} />
       {/* <Route path="statistics"                  component={StatisticsTab}/> */}

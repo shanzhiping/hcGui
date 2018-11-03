@@ -1,7 +1,6 @@
 import { FormattedMessage as T, injectIntl, defineMessages } from "react-intl";
 import SendTabPage from './sendTabPage';
-import {omniSend} from "connectors";
-
+import {omniSend} from "connectors"; 
 
 const BASE_OUTPUT = { destination: "", amount: null };
 
@@ -64,7 +63,7 @@ class SendPage extends React.Component {
 
   onAssetsChange=(asset)=>{
     if(asset!==this.state.asset){
-      this.setState({asset})
+      this.setState({asset,address:asset.addressData[0]})
     } 
   }
 

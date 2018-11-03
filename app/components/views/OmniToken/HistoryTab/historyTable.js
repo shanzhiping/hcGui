@@ -1,31 +1,40 @@
 
+import { tsToDate } from "helpers";
+import { FormattedMessage as T } from "react-intl";
 
-const historyTable = ({tradeHistory,onDetail}) => (
+const historyTable = ({ onProperyidToName, listTransactions, onDetail }) => (
 
-        <div className="omni-history-list">
-            <div className="omni-history-list-header">
-                <div>类型</div>
-                <div>数量</div>
-                <div>货币</div>
-                <div>交易明细</div>
-                <div>交易时间</div>
+    <div className="omni-history-list">
+        <div className="omni-history-list-header">
+            <div>
+            <T id="omni.history.type"
+                        m="type"/>
             </div>
-            <div className="omni-history-list-body">
-               {tradeHistory && tradeHistory.length>0?tradeHistory.map(item=><div>
-                    <div>{item.type}</div>
-                    <div>{item.amountforsale}</div>
-                    <div>货币</div>
-                    {/* <div>交易明细</div> */}
-                    <div>{item.blocktime}}</div>
-               </div>):<div className="omni-history-list-tips" onClick={()=>{
-                   onDetail("11");
-               }}>
-                    没有历史记录
-                </div>
-                } 
-                
-            </div>
+            <div><T id="omni.history.amount"
+                        m="amount"/></div>
+            <div><T id="omni.history.currency"
+                        m="name"/></div>
+            {/* <div>交易明细</div> */}
+            <div><T id="omni.history.blockTime"
+                        m="blockTime"/></div>
         </div>
-    );
+        <div className="omni-history-list-body">
+            {listTransactions && listTransactions.length > 0 ? listTransactions.map((item) => <div key={item.txid} onClick={() => {
+                onDetail(item.txid);
+            }}>
+                <div>{item.type}</div>
+                <div>{item.amount ? item.amount : '--'}</div>
+                <div>{onProperyidToName(item.propertyid)}</div>
+                {/* <div>交易明细</div> */}
+                <div>
+                    <T id="transaction.timestamp"
+                        m="{timestamp, date, medium} {timestamp, time, medium}"
+                        values={{ timestamp: tsToDate(item.blocktime) }} /></div>
+            </div>) : null
+            }
+
+        </div>
+    </div>
+);
 
 export default historyTable;

@@ -3,6 +3,7 @@ import React from "react";
 import Details from './details' 
 import QRCodeButton from 'buttons/QRCodeButton';
 import OptionsButton from 'buttons/OptionsButton';
+import { FormattedMessage as T } from "react-intl"; 
 
 import "style/OmniAssetsList.less"; 
 
@@ -32,7 +33,7 @@ class row extends React.PureComponent {
                             <div>
                                 <OptionsButton btnClass="address-operation" { ...{onMenuChanged:onMenuChanged,
                                     menuItemDatas:menuItemDatas,
-                                    btnText:'操作'
+                                    btnText:<T id="omni,asstes.operation" m="operation"/>
                                     } }/>
                             </div> 
                         </div>

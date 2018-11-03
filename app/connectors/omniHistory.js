@@ -7,11 +7,17 @@ import * as oa from "../actions/OmniActions"
 
 const mapStateToProps = selectorMap({
     walletAddressBalances: sel.walletAddressBalances,
-    tradeHistory:sel.tradeHistory
+    tradeHistory:sel.tradeHistory,
+    noMoreTransactions:sel.omniNoMoreTransactions,
+    listTransactions:sel.omniListTransactions,
+    window: sel.mainWindow,
+    listproperties:sel.listproperties,
+    omniTransaction:sel.omniTransaction,
   });
   
-  const mapDispatchToProps = (dispatch) => bindActionCreators({ 
-    gettradehistoryforaddress:oa.gettradehistoryforaddress_func
+  const mapDispatchToProps = (dispatch) => bindActionCreators({  
+    getListtransactions:oa.listtransactions_func,
+    gettransaction:oa.gettransaction_func
   }, dispatch);
   
   export default connect(mapStateToProps,mapDispatchToProps);

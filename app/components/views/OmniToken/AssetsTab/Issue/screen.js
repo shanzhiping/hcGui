@@ -1,19 +1,18 @@
 
 import OptionsButton from 'buttons/OptionsButton';
- 
+import Screen from 'shared/screen';
+import { FormattedMessage as T } from "react-intl"; 
 
-const Screen = ({tabTitle,onEcosystemChanged,ecosystem,ecosystemDatas }) => (
 
-        <div className="omni-address-operation-area">
-            <div>{tabTitle}</div>
-            <div>
-               生态系统 <OptionsButton btnClass="createAddress-operation" {...{
-                    onMenuChanged: onEcosystemChanged,
-                    menuItemDatas: ecosystemDatas,
-                    btnText: ecosystem.text
-                }} />
-            </div>
-        </div>
-    );
+const Index = ({ tabTitle, onEcosystemChanged, ecosystem, ecosystemDatas }) => (
+    <Screen title={tabTitle}>
+    <T id="omni.Ecosystem" m="Ecosystem"/> <OptionsButton btnClass="createAddress-operation" {...{
+            onMenuChanged: onEcosystemChanged,
+            menuItemDatas: ecosystemDatas,
+            btnText: ecosystem.text
+        }} />
+    </Screen>
 
-export default Screen;
+);
+
+export default Index;
