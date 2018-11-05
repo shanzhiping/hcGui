@@ -304,7 +304,9 @@ export function newWalletConfigCreation(testnet, walletPath) {
       rpcuser: "USER",
       rpcpass: "PASSWORD",
       rpclisten: "127.0.0.1:9678",
-      testnet: testnet ? "1" : "0"
+      testnet: testnet ? "1" : "0",
+      addrindex:1,
+      txindex:1
     }
   };
   fs.writeFileSync(hcdCfg(getWalletPath(testnet, walletPath)), ini.stringify(hcdConf));
