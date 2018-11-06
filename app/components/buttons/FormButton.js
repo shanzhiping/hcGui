@@ -1,6 +1,6 @@
 import Card from "card";
 import {KeyBlueButton} from "buttons";
-
+import { FormattedMessage as T } from "react-intl";
  
 
 const FormButton = ({ router,onNextStep,disabled }) => (
@@ -13,14 +13,14 @@ const FormButton = ({ router,onNextStep,disabled }) => (
                 router.goBack()
             }}
             block={false} >
-            退出
+            <T id="formButton.quit" m="Quit" />
         </KeyBlueButton>:null}
         <KeyBlueButton
             disabled={disabled}
             size="large"
             onClick={onNextStep}
             block={false} >
-            下一步
+            <T id="formButton.nextStep" m="Next step" />
         </KeyBlueButton>
     </div>
 </Card>

@@ -1,12 +1,13 @@
  import "style/ReceivePage.less"; 
+ import { FormattedMessage as T } from "react-intl";
 
  export default ({addr,pubKey}) => (
   <div className="pubKeymodal-content">
     <div>
-      <div>地址：</div>
+      <div><T id="omni,asstes.address" m="address" />：</div>
       <div>{addr}</div></div>
     <div>
-    <div>公钥：</div>
+    <div><T id="omni.addressPage.publicKey" m="public key" />：</div>
     <div>{pubKey} </div>
   </div>
 </div>

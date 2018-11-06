@@ -40,7 +40,7 @@ const Transaction = ({
   message,
   intl
 }) =>{
-  console.log(type,'============疑问之处================');
+  /** */
   if(type=='Coinbase'){
     return null;
   }

@@ -1,7 +1,9 @@
 import { compose } from "fp";
 import { FormattedMessage as T, injectIntl, defineMessages } from "react-intl";
 import { AddressInput, InputSelect, FloatInput } from "inputs";
-import { PassphraseModalButton } from "buttons";
+import { KeyBlueButton } from "buttons";
+
+import ConfirmSendModal from "./confirmSendModal"
 import 'style/OmniSendPage.less';
 
 
@@ -31,14 +33,18 @@ const SendTabPage = ({
     asset,
     intl,
     isValid,
-    onSubmit
+
+    onSend,
+    showConfirmSendModal,
+    onCancelModal,
+    onSubmit,
 }) => (
         <Aux>
             <div className="tab-card">
                 <div className="omni-sendForm">
                     <div className="sendForm-panel">
-                        <div> 
-                            <T id="omni.send.field.choiceCurrency" m="Choice of currency"/>
+                        <div>
+                            <T id="omni.send.field.choiceCurrency" m="Choice of currency" />
                         </div>
                         <div><InputSelect className="send-select-account-input" {...{
                             datas: assetsList,
@@ -48,8 +54,8 @@ const SendTabPage = ({
                         }} /></div>
                     </div>
                     <div className="sendForm-panel">
-                        <div> 
-                        <T id="omni.send.field.sendAddress" m="Send address"/>
+                        <div>
+                            <T id="omni.send.field.sendAddress" m="Send address" />
                         </div>
                         <div><InputSelect className="send-select-account-input" {...{
                             datas: addressList,
@@ -61,10 +67,10 @@ const SendTabPage = ({
                 </div>
                 <div className="omni-sendForm">
                     <div className="sendForm-panel">
-                        <div> 
-                        <T id="omni.send.field.sendAmount" m="Send {assetName} (Effective {assetName})"
-                        values={{ assetName: asset ? asset.name : "" }}
-                        />
+                        <div>
+                            <T id="omni.send.field.sendAmount" m="Send {assetName} (Effective {assetName})"
+                                values={{ assetName: asset ? asset.name : "" }}
+                            />
                         </div>
                         <div>
                             <FloatInput
@@ -81,7 +87,7 @@ const SendTabPage = ({
                         </div>
                     </div>
                     <div className="sendForm-panel">
-                        <div><T id="omni.send.field.ReceivingAddress" m="Receiving address"/></div>
+                        <div><T id="omni.send.field.ReceivingAddress" m="Receiving address" /></div>
                         <div>
                             <AddressInput
                                 autoFocus={true}
@@ -101,25 +107,25 @@ const SendTabPage = ({
                     <div>
                         {/* <p>全部交易费用: 0.00025 HC </p> */}
 
-                        <p> 
-                        <T id="omni.send.tips.AvailableAddress" m="From available address: {balance} {assetName}"
-                        values={{
-                            balance:address?address.balance:0,
-                            assetName:asset ? asset.name : ""
-                        }}/>
+                        <p>
+                            <T id="omni.send.tips.AvailableAddress" m="From available address: {balance} {assetName}"
+                                values={{
+                                    balance: address ? address.balance : 0,
+                                    assetName: asset ? asset.name : ""
+                                }} />
                         </p>
 
-                        {parseFloat(amount) > parseFloat(address?address.balance:0) ? <p className="omni-send-error"> 
-                        
-                        <T id="omni.send.tips.errormassge" m="Your sender address does not have enough {assetName} to complete the transaction. Please send at least {balance}{assetName} coverage to estimate total transaction cost."
-                        values={{
-                            balance:address?address.balance:0,
-                            assetName:asset ? asset.name : ""
-                        }}/>
+                        {parseFloat(amount) > parseFloat(address ? address.balance : 0) ? <p className="omni-send-error">
+
+                            <T id="omni.send.tips.errormassge" m="Your sender address does not have enough {assetName} to complete the transaction. Please send at least {balance}{assetName} coverage to estimate total transaction cost."
+                                values={{
+                                    balance: address ? address.balance : 0,
+                                    assetName: asset ? asset.name : ""
+                                }} />
                         </p> : null}
                     </div>
                     <div>
-                        <PassphraseModalButton
+                        {/* <PassphraseModalButton
                             modalTitle={<T id="send.sendConfirmations" m="Transaction Confirmation" />}
                             modalDescription={<Aux><T id="send.confirmAmountLabel" m="Please confirm your transaction for" />:  {amount} {asset ? asset.name : ""}</Aux>}
                             disabled={!isValid}
@@ -127,6 +133,24 @@ const SendTabPage = ({
                             onSubmit={onSubmit}
                             loading={false}
                             buttonLabel={<T id="send.sendBtn" m="Send" />}
+                        /> */}
+
+                        <KeyBlueButton
+                            disabled={!isValid}
+                            size="large"
+                            onClick={onSend}
+                            block={false} >
+                           <T id="formButton.nextStep" m="Next step" />
+                        </KeyBlueButton>
+                        <ConfirmSendModal {
+                            ...{
+                                show: showConfirmSendModal,
+                                onCancelModal,
+                                onSubmit,
+                                amount,
+                                name: asset ? asset.name : ""
+                            }
+                        }
                         />
                     </div>
 

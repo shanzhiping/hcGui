@@ -4949,6 +4949,309 @@ msgctxt "omni.address.preview"
 msgid "preview"
 msgstr "预览"
 
+#. [omni.send.confirmSendTitle]
+#. defaultMessage is:
+#. Confirm the transaction
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.send.confirmSendTitle"
+msgid "Confirm the transaction"
+msgstr "确认交易"
+
+#. [formButton.quit]
+#. defaultMessage is:
+#. Quit
+#: app/i18n/extracted/app/messages.json
+msgctxt "formButton.quit"
+msgid "Quit"
+msgstr "退出"
+
+#. [formButton.nextStep]
+#. defaultMessage is:
+#. Confirm the transaction
+#: app/i18n/extracted/app/messages.json
+msgctxt "formButton.nextStep"
+msgid "Next step"
+msgstr "下一步"
+
+#. [omni.assets.infoForm.cardTitle.description]
+#. defaultMessage is:
+#. Intelligent Asset description
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.cardTitle.description"
+msgid "Intelligent Asset description"
+msgstr "智能资产描述"
+
+#. [omni.assets.infoForm.name]
+#. defaultMessage is:
+#. Name (ex. Bobcoin)
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.name"
+msgid "Name (ex. Bobcoin)"
+msgstr "名称 (ex. Bobcoin)"
+
+#. [omni.assets.infoForm.divisible]
+#. defaultMessage is:
+#. Divisible
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.divisible"
+msgid "Divisible"
+msgstr "可分割"
+
+#. [omni.assets.infoForm.category]
+#. defaultMessage is:
+#. Category
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.category"
+msgid "Category"
+msgstr "分类"
+
+#. [omni.assets.infoForm.subCategory]
+#. defaultMessage is:
+#. Category
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.subCategory"
+msgid "Sub Category"
+msgstr "子分类"
+
+#. [omni.assets.infoForm.assetURL]
+#. defaultMessage is:
+#. Asset URL (enter the relevant web site to help users learn more about smart assets)
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.assetURL"
+msgid "Asset URL (enter the relevant web site to help users learn more about smart assets)"
+msgstr "资产网址 (输入相关网址以帮助用户了解更多关于智能资产的信息)"
+
+#. [omni.assets.infoForm.URL]
+#. defaultMessage is:
+#. Asset URL
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.URL"
+msgid "Asset URL"
+msgstr "资产网址"
+
+
+#. [omni.assets.infoForm.description]
+#. defaultMessage is:
+#. Description
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.description"
+msgid "Description"
+msgstr "描述"
+
+#. [omni.assets.infoForm.numberOfToken]
+#. defaultMessage is:
+#. Number of token (number of expected inputs)
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.numberOfToken"
+msgid "Number of token (number of expected inputs)"
+msgstr "令牌数量 (输入期望的数量)"
+
+#. [omni.assets.infoForm.Tokens]
+#. defaultMessage is:
+#. Number of token
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.Tokens"
+msgid "Number of token"
+msgstr "令牌数量"
+
+#. [omni.assets.infoForm.issueAddress]
+#. defaultMessage is:
+#. Issue address
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.issueAddress"
+msgid "Issue address"
+msgstr "发行地址"
+
+#. [omni.assets.infoForm.cardTitle.releaseDetails]
+#. defaultMessage is:
+#. Release details
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.cardTitle.releaseDetails"
+msgid "Release details"
+msgstr "发行明细"
+
+
+#. [omni.assetsInfoForm.tips]
+#. defaultMessage is:
+#. {tips} residual characters
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assetsInfoForm.tips"
+msgid "{tips} residual characters"
+msgstr "{tips} 剩余字符"
+
+#. [omni.assetsInfoForm.divisibleEnumToYes]
+#. defaultMessage is:
+#. Yes
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assetsInfoForm.divisibleEnumToYes"
+msgid "Yes"
+msgstr "是"
+
+#. [omni.assetsInfoForm.divisibleEnumToNo]
+#. defaultMessage is:
+#. No
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assetsInfoForm.divisibleEnumToNo"
+msgid "No"
+msgstr "否"
+
+#. [omni.assetsInfoForm.firstCategory]
+#. defaultMessage is:
+#. Please choose
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assetsInfoForm.firstCategory"
+msgid "Please choose"
+msgstr "请选择"
+
+#. [omni.IssuanceScreen.ecosystemToMain]
+#. defaultMessage is:
+#. main
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.IssuanceScreen.ecosystemToMain"
+msgid "main"
+msgstr "产品"
+
+#. [omni.IssuanceScreen.ecosystemToTest]
+#. defaultMessage is:
+#. Test
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.IssuanceScreen.ecosystemToTest"
+msgid "Test"
+msgstr "测试"
+
+#. [omni.issuePage.title]
+#. defaultMessage is:
+#. Creating intelligent assets
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.issuePage.title"
+msgid "Creating intelligent assets"
+msgstr "创建智能资产"
+
+#. [omni.managePage.title]
+#. defaultMessage is:
+#. Creating management assets
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.managePage.title"
+msgid "Creating management assets"
+msgstr "创建管理资产"
+
+#. [omni.myAssetsPage.title]
+#. defaultMessage is:
+#. My Assets
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssetsPage.title"
+msgid "My Assets"
+msgstr "我的资产"
+
+#. [omni.myAsset.createButton]
+#. defaultMessage is:
+#. Create
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAsset.createButton"
+msgid "Create"
+msgstr "创建"
+
+#. [omni.myAssets.Field.PropertyId]
+#. defaultMessage is:
+#. PropertyId
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssets.Field.PropertyId"
+msgid "PropertyId"
+msgstr "资产ID"
+
+#. [omni.myAssets.Field.Assets]
+#. defaultMessage is:
+#. Assets
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssets.Field.Assets"
+msgid "Assets"
+msgstr "资产名称"
+
+#. [omni.myAssets.Field.TotalTokens]
+#. defaultMessage is:
+#. TotalTokens
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssets.Field.TotalTokens"
+msgid "TotalTokens"
+msgstr "总数量"
+
+#. [omni.myAssets.Field.URL]
+#. defaultMessage is:
+#. URL
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssets.Field.URL"
+msgid "URL"
+msgstr "网址"
+
+#. [omni.tables.noData]
+#. defaultMessage is:
+#. no data
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.tables.noData"
+msgid "no data"
+msgstr "没有数据"
+
+#. [omni.myAssets.Type.issue]
+#. defaultMessage is:
+#. Intelligent assets
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssets.Type.issue"
+msgid "Intelligent assets"
+msgstr "智能资产"
+
+#. [omni.myAssets.Type.crowdsale]
+#. defaultMessage is:
+#. Crowd-funding
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssets.Type.crowdsale"
+msgid "Crowd-funding"
+msgstr "众筹"
+
+#. [omni.myAssets.Type.managed]
+#. defaultMessage is:
+#. Management assets
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.myAssets.Type.managed"
+msgid "Management assets"
+msgstr "管理资产"
+
+#. [omni.addressPage.publicKey]
+#. defaultMessage is:
+#. public key
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.addressPage.publicKey"
+msgid "public key"
+msgstr "公钥"
+
+#. [omni.addressPage.signMessage]
+#. defaultMessage is:
+#. Sign Message
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.addressPage.signMessage"
+msgid "Sign Message"
+msgstr "消息签名"
+
+#. [omni.browseType.address]
+#. defaultMessage is:
+#. address
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.browseType.address"
+msgid "address"
+msgstr "地址"
+
+#. [omni.browseType.wallet]
+#. defaultMessage is:
+#. wallet
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.browseType.wallet"
+msgid "wallet"
+msgstr "钱包"
+
+
+
+
+
+
 
 
 

@@ -8,6 +8,9 @@
     gettransaction:"omni_gettransaction",
     listtransactions:"omni_listtransactions",
     gettradehistoryforpair:"omni_gettradehistoryforpair",
-    gettradehistoryforaddress:"omni_gettradehistoryforaddress"
+    gettradehistoryforaddress:"omni_gettradehistoryforaddress",
+    sendissuancefixed:"omni_sendissuancefixed",
+    sendissuancemanaged:"omni_sendissuancemanaged",
+    getproperty:"omni_getproperty",
  }
 

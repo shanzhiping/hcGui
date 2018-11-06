@@ -5,11 +5,11 @@ import { FormattedMessage as T } from "react-intl";
 
 const Index = ({ assetsTypes,
     onAssesTypesChanged }) => (
-        <Screen title="我的资产">
+        <Screen title={<T id="omni.myAssetsPage.title" m="My Assets"/>}>
             <OptionsButton btnClass="createAddress-operation" {...{
                 onMenuChanged: onAssesTypesChanged,
                 menuItemDatas: assetsTypes,
-                btnText: "创建"
+                btnText: <T id="omni.myAsset.createButton" m="Create"/>
             }} />
         </Screen>
 

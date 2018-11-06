@@ -1,30 +1,22 @@
-import { compose } from "fp";
-import Card from "card";
-import { Input, InputSelect, TextArea, FloatInput } from "inputs";
-import { KeyBlueButton, FormButton } from "buttons";
-import AssetsInfoForm from "../assetsInfoForm";
-import ReleaseDetailForm from "../releaseDetailsForm";
+ 
+import { FormButton } from "buttons";
+import AssetsInfoForm from "./assetsInfoForm";
+import ReleaseDetailForm from "./releaseDetailsForm";
 import "style/omniForm.less";
 
 
-const Form = ({
-    onDivisibleEnumchanged,
-    divisibleEnum,
+const IssuanceForm = ({
+    onDivisibleEnumchanged, 
     nameError,
     name,
     onNameChange,
-    onAssetAddressChange,
-    assetAddress,
-    assetAddressError,
+    onUrlChange,
+    url,
+    urlError,
     onCategoryChange,
     onSubCategoryChange,
     onAssetDescriptionChange,
-    description,
-    descriptionMaxLength,
-    tips,
-    tokenNumber,
-    tokenNumberError,
-    onTokenNumberChange,
+    description,  
     addressList,
     onAddressChange,
     amountError,
@@ -32,38 +24,34 @@ const Form = ({
     onAmountChange,
     router,
     onNextStep,
+    amountDisabled,
     disabled
 }) => {
     return (
         <div>
             <AssetsInfoForm {
                 ...{
-                    onDivisibleEnumchanged,
-                    divisibleEnum,
+                    onDivisibleEnumchanged, 
                     nameError,
                     name,
                     onNameChange,
-                    onAssetAddressChange,
-                    assetAddress,
-                    assetAddressError,
+                    onUrlChange,
+                    url,
+                    urlError,
                     onAssetDescriptionChange,
-                    description,
-                    descriptionMaxLength,
-                    tips,
+                    description, 
                     onCategoryChange,
                     onSubCategoryChange,
                 }
             } />
             <ReleaseDetailForm {
-                ...{
-                    tokenNumber,
-                    tokenNumberError,
-                    onTokenNumberChange,
+                ...{ 
                     addressList,
                     onAddressChange,
                     amountError,
                     amount,
                     onAmountChange,
+                    amountDisabled
                 }
             }
             />
@@ -73,9 +61,9 @@ const Form = ({
                     onNextStep: onNextStep,
                     disabled
                 }
-            } />
+            } /> 
         </div>
     )
 };
 
-export default Form;
+export default IssuanceForm;

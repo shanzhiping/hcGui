@@ -1,42 +1,31 @@
+import { shell } from "electron";
+import { FormattedMessage as T } from "react-intl";
 
-
-const AssetsList = ({ }) => (
+const AssetsList = ({ listproperties }) => (
 
     <div className="omni-history-list">
         <div className="omni-history-list-header">
-            <div>资产ID</div>
-            <div>资产名称</div>
-            <div>总数量</div>
-            <div>网址</div>
+            <div><T id="omni.myAssets.Field.PropertyId" m="PropertyId" /></div>
+            <div><T id="omni.myAssets.Field.Assets" m="Assets" /></div>
+            <div>
+                <T id="omni.myAssets.Field.TotalTokens" m="TotalTokens" />
+            </div>
+            <div>
+                <T id="omni.myAssets.Field.URL" m="URL" />
+            </div>
         </div>
         <div className="omni-history-list-body">
-            <div>
-                <div>2147483804 (Manage)</div>
-                <div>TEST</div>
-                <div>1999.00000000</div>
-                <div>http://testnet-hcomni-wallet.h.cash/assets/issue</div>
-            </div>
-            <div>
-                <div>2147483804 (Manage)</div>
-                <div>TEST</div>
-                <div>1999.00000000</div>
-                <div>http://testnet-hcomni-wallet.h.cash/assets/issue</div>
-            </div>
-            <div>
-                <div>2147483804 (Manage)</div>
-                <div>TEST</div>
-                <div>1999.00000000</div>
-                <div>http://testnet-hcomni-wallet.h.cash/assets/issue</div>
-            </div>
-            <div>
-                <div>2147483804 (Manage)</div>
-                <div>TEST</div>
-                <div>1999.00000000</div>
-                <div>http://testnet-hcomni-wallet.h.cash/assets/issue</div>
-            </div>
-            <div className="omni-history-list-tips">
-                没有资产数据
+
+            {listproperties ? listproperties.map(item => (
+                <div key={item.propertyid}>
+                    <div>{item.propertyid} (Manage)</div>
+                    <div>{item.name}</div>
+                    <div>{item.detail.totaltokens}</div>
+                    <div><a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, item.url)}>{item.url}</a></div>
                 </div>
+            )) : <div className="omni-history-list-tips"> 
+                    <T id="omni.tables.noData" m="no data" />
+            </div>}
 
         </div>
     </div>

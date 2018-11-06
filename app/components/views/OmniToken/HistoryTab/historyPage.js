@@ -33,8 +33,7 @@ class HistoryPage extends React.Component {
         this.getListtransactions(address,0);
     }
 
-    onDetail = (txHash) => {
-        console.log(txHash);
+    onDetail = (txHash) => { 
         this.props.router.push("/omni/history/" + txHash);
     }
 

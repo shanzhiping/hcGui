@@ -2,7 +2,7 @@
 import React from "react" ;
 import AssetsRow from "./Row" ;
 import {omniAssetsList} from "connectors";
- 
+import { FormattedMessage as T } from "react-intl";
 
 //   const menuItemDatas=[{
 //       value:'',
@@ -35,7 +35,7 @@ import {omniAssetsList} from "connectors";
     }
 
     onMenuChanged=(address)=>(value)=>{
-        //todo  从钱包中移除
+        //todo   从钱包中移除 
     }
  
     render() {  
@@ -51,12 +51,12 @@ import {omniAssetsList} from "connectors";
                         onhideAssetsItem:this.onhideAssetsItem,
                         isShowAssetsItem:this.state.assetsItemNum==item.name,
                         onMenuChanged:this.onMenuChanged,
-                        menuItemDatas:null     //暂时没有移除地址操作
+                        menuItemDatas:null 
                     }
                 }/>
             })
         }else{
-            row = <div>没有数据</div>
+            row = <div> <T id="omni.tables.noData" m="no data" /></div>
         }
 
         return row

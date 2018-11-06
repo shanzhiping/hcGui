@@ -1,6 +1,15 @@
-const AssetsPage = ({} ) => (
-   <div>
-       我的资产-管理资产
-   </div>
- ); 
- export default AssetsPage;
+import IssuancePage from '../IssuancePage';
+import { FormattedMessage as T} from "react-intl"; 
+
+const ManagedPage = ({ router}) => (
+    <IssuancePage 
+        {
+            ...{
+                tabTitle:<T id="omni.managePage.title" m="Creating management assets"/>,
+                formType:"managed",
+                router
+            }
+        }
+    />
+);
+export default ManagedPage;

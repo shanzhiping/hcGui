@@ -2,16 +2,19 @@ import Row from "./row" ;
 import PubKeyModal from './publKeyModal';
 import SignMessageModal from './signMessageModal'
 import {omniAssetsList} from "connectors";
+import { FormattedMessage as T, injectIntl, defineMessages } from "react-intl";
 
-const menuItemDatas=[{
-    value:'pubKey',
-    text:'公钥'
-},
-{
-  value:'signMessage',
-  text:'Sign Message'
-}]
 
+const messages=defineMessages({
+    menuItemToPublicKey:{
+        id:'omni.addressPage.publicKey',
+        defaultMessage:"public key"
+    },
+    menuItemToPublicSignMessage:{
+        id:'omni.addressPage.signMessage',
+        defaultMessage:"Sign Message"
+    }
+}) 
 
  class index extends React.PureComponent {
   
@@ -35,6 +38,16 @@ const menuItemDatas=[{
     onCancelPubKeyModal=()=>{
         this.setState({showPubKeyModal:false})
     }
+
+
+    menuItemDatas=()=>[{
+        value:'pubKey',
+        text:this.props.intl.formatMessage(messages.menuItemToPublicKey),
+    },
+    {
+      value:'signMessage',
+      text:this.props.intl.formatMessage(messages.menuItemToPublicSignMessage),
+    }]
 
     onMenuChanged= address => value =>{ 
         if(value==='pubKey'){
@@ -67,7 +80,7 @@ const menuItemDatas=[{
                                 ...{ 
                                     data:item,
                                     onMenuChanged:this.onMenuChanged(item.address),
-                                    menuItemDatas:menuItemDatas
+                                    menuItemDatas:this.menuItemDatas()
                                 }
                             }/>
                         })
@@ -76,10 +89,10 @@ const menuItemDatas=[{
                     <PubKeyModal  show={showPubKeyModal} onCancelModal={this.onCancelPubKeyModal} addr={addr} pubKey={pubKey}/>
                     </div>
         }else{
-            row = <div>没有数据</div>
+            row = <div> <T id="omni.tables.noData" m="no data" /></div>
         } 
         return row
     }
 }
 
-export default omniAssetsList(index);
+export default omniAssetsList(injectIntl(index));

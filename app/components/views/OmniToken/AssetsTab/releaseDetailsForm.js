@@ -1,42 +1,47 @@
 import { compose } from "fp";
 import Card from "card";
 import { InputSelect, FloatInput } from "inputs";
-import { omniAssetsForm } from "connectors";
+import { omniIssuanceForm } from "connectors";
+import { FormattedMessage as T } from "react-intl";
 import "style/omniForm.less";
 
 
 class ReleaseDetailForm extends React.PureComponent {
+    componentDidMount = () => {
+        this.props.onAddressChange(this.props.walletAddressBalances[0]);
+    }
     render() {
-        const { tokenNumber,
-            tokenNumberError,
-            onTokenNumberChange, 
+        const {
             onAddressChange,
             amountError,
             amount,
-            onAmountChange, walletAddressBalances} = this.props;
+            onAmountChange, walletAddressBalances, amountDisabled } = this.props;
 
-        return <Card title="发行明细">
+        return <Card title={<T id="omni.assets.infoForm.cardTitle.releaseDetails" m="Release details" />}>
             <div className="omni-form-row">
                 <div className="col col-sm-6">
-                    <div>令牌数量 (输入期望的数量)</div>
+                    <div>
+                        <T id="omni.assets.infoForm.numberOfToken" m="Number of token (number of expected inputs)" />
+                    </div>
                     <div> <FloatInput
-                        showErrors={!!tokenNumberError}
-                        invalid={!!tokenNumberError}
-                        invalidMessage={tokenNumberError}
+                        showErrors={!!amountError}
+                        invalid={!!amountError}
+                        invalidMessage={amountError}
                         hidden={false}
-                        value={tokenNumber}
+                        value={amount}
                         className="send-address-input-amount"
-                        onChange={compose(onTokenNumberChange, e => e.target.value)}
+                        onChange={compose(onAmountChange, e => e.target.value)}
                         maxFracDigits={8}
                         required={true}
+                        placeholder={amountDisabled?"Managed Property Amounts are issued after creation":""}
+                        disabled={amountDisabled}
                     />
                     </div>
                 </div>
-            </div>
-
-            <div className="omni-form-row">
                 <div className="col col-sm-6">
-                    <div>发行地址</div>
+                    <div>
+                        <T id="omni.assets.infoForm.issueAddress" m="Issue address" />
+                    </div>
                     <div><InputSelect className="send-select-account-input" {...{
                         datas: walletAddressBalances,
                         onChange: onAddressChange,
@@ -44,26 +49,31 @@ class ReleaseDetailForm extends React.PureComponent {
                         valueKey: "address",
                     }} /></div>
                 </div>
+            </div>
+
+             {/*<div className="omni-form-row">
+
                 <div className="col col-sm-6">
                     <div>Miner Fees (HC) ( HC 有效的)</div>
                     <div>
                         <FloatInput
-                            showErrors={!!amountError}
-                            invalid={!!amountError}
-                            invalidMessage={amountError}
+                            showErrors={!!feesError}
+                            invalid={!!feesError}
+                            invalidMessage={feesError}
                             hidden={false}
-                            value={amount}
+                            value={fees}
                             className="send-address-input-amount"
                             placeholder={0.002}
-                            onChange={compose(onAmountChange, e => e.target.value)}
+                            onChange={compose(onFeesChange, e => e.target.value)}
                             maxFracDigits={8}
+                            required={true}
                         />
                     </div>
-                </div>
+                </div> 
 
-            </div>
+            </div>*/}
         </Card>
     }
 }
 
-export default omniAssetsForm(ReleaseDetailForm);
+export default omniIssuanceForm(ReleaseDetailForm);

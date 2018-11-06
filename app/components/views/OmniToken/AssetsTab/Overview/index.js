@@ -1,35 +1,57 @@
 import Screen from './screen';
 import AssetsList from './assetsList';
+import {omniIssuanceList} from "connectors";
+import { FormattedMessage as T, injectIntl, defineMessages } from "react-intl";
+ 
+const messages=defineMessages({
+    assetsTypeToIssueKey:{
+        id:"omni.myAssets.Type.issue",
+        defaultMessage:"Intelligent assets"
+    },
+    assetsTypeToCrowdsaleKey:{
+        id:"omni.myAssets.Type.crowdsale",
+        defaultMessage:"Crowd-funding"
+    },
+    assetsTypeToManagedKey:{
+        id:"omni.myAssets.Type.managed",
+        defaultMessage:"Management assets"
+    }
 
-const assetsTypes = [{
-    text: "智能资产",
-    value: 'issue'
-}, {
-    text: "众筹",
-    value: 'crowdsale'
-}, {
-    text: "管理资产",
-    value: 'managed'
-}]
+})
 
-class Overview extends React.Component {
+class OverviewPage extends React.Component {
     constructor(props) {
         super(props); 
     }
     onAssesTypesChanged = (value) => { 
         this.props.router.push(`/omni/assets/${value}`)
     }
+
+    assetsTypes =()=> [{
+        text: this.props.intl.formatMessage(messages.assetsTypeToIssueKey),
+        value: 'issue'
+    }, {
+        text: this.props.intl.formatMessage(messages.assetsTypeToCrowdsaleKey),
+        value: 'crowdsale'
+    }, {
+        text:  this.props.intl.formatMessage(messages.assetsTypeToManagedKey),
+        value: 'managed'
+    }]
+
     render() {
+        const {listproperties} =this.props;
         return (
             <div>
                 <Screen {...{
-                    assetsTypes,
+                    assetsTypes:this.assetsTypes(),
                     onAssesTypesChanged:this.onAssesTypesChanged
                 }} />
-                <AssetsList />
+                <AssetsList {
+                   ...{listproperties}
+                }/>
             </div>
         )
     }
 }
 
-export default Overview;
+export default omniIssuanceList(injectIntl(OverviewPage));

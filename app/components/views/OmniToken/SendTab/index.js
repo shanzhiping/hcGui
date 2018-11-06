@@ -1,8 +1,8 @@
-import { FormattedMessage as T, injectIntl, defineMessages } from "react-intl";
-import SendTabPage from './sendTabPage';
+import { FormattedMessage as T } from "react-intl";
+import SendTabPage from './sendTabPage'; 
 import {omniSend} from "connectors"; 
 
-const BASE_OUTPUT = { destination: "", amount: null };
+ 
 
 class SendPage extends React.Component {
   constructor(props) {
@@ -15,10 +15,13 @@ class SendPage extends React.Component {
       address:props.walletAssetsBalances && props.walletAssetsBalances.length>0?props.walletAssetsBalances[0].addressData[0]:null,
       asset:props.walletAssetsBalances && props.walletAssetsBalances.length>0?props.walletAssetsBalances[0]:null, 
       destination: "", 
-      amount: null
+      amount: null,
+      showConfirmSendModal:false, 
     };
   }
-
+  onCancelModal=()=>{
+    this.setState({showConfirmSendModal:false});
+  }
   getOnChangeOutputDestination=(destination)=> { 
       let destinationInvalid = false;
       let updateDestinationState = () => {
@@ -68,16 +71,27 @@ class SendPage extends React.Component {
   }
 
   getIsValid() {
-    const {address,asset,destination,amount} = this.state; 
-    return !!(address && asset && destination && amount && (parseFloat(amount)<=parseFloat(address.balance)));
+    const {address,asset,destination,destinationInvalid,amount} = this.state; 
+    return !!(address && asset && !(!destination || destinationInvalid) && amount && (parseFloat(amount)<=parseFloat(address.balance)));
   }
-  onSend=(privpass) =>{
-    const { send_func,onAttemptSignTransaction,unsignedTransaction,nextAddressAccount } = this.props; 
-    const {address,destination,amount,asset} =this.state;  
+  onSend=() =>{
+    if (!this.getIsValid()) return;
+    this.setState({showConfirmSendModal:true})
+    // const { send_func,onAttemptSignTransaction,unsignedTransaction,nextAddressAccount } = this.props; 
+    // const {address,destination,amount,asset} =this.state;  
     
-    if (!privpass || !this.getIsValid()) return;
-    onAttemptSignTransaction && onAttemptSignTransaction(privpass, unsignedTransaction);
-    send_func && nextAddressAccount && send_func({fromaddress:address.address,toaddress:destination,propertyid:asset.propertyid,amount:amount});
+    // if (!privpass || !this.getIsValid()) return;
+    // onAttemptSignTransaction && onAttemptSignTransaction(privpass, unsignedTransaction);
+    // send_func && nextAddressAccount && send_func({fromaddress:address.address,toaddress:destination,propertyid:asset.propertyid,amount:amount});
+    // this.onClearTransaction();
+  }
+
+  onSubmit=()=>{ 
+    if (!this.getIsValid()) return;
+
+    const { send_func } = this.props; 
+    const {address,destination,amount,asset} =this.state;  
+    send_func  && send_func({fromaddress:address.address,toaddress:destination,propertyid:asset.propertyid,amount:amount});
     this.onClearTransaction();
   }
 
@@ -105,7 +119,7 @@ class SendPage extends React.Component {
   }
   render() { 
     const {walletAssetsBalances} =this.props;
-    const {address,asset,destination,amount} = this.state;
+    const {address,asset,destination,amount,showConfirmSendModal} = this.state;
     const isValid = this.getIsValid();
     return  <SendTabPage {...{
         addressList:asset?asset.addressData:null,
@@ -115,16 +129,21 @@ class SendPage extends React.Component {
         getOnChangeOutputDestination:this.getOnChangeOutputDestination,
         getOnChangeOutputAmount:this.getOnChangeOutputAmount,
         addressError:this.getAddressError(),
-        amountError:this.getAmountError(), 
-        onSubmit:this.onSend,
+        amountError:this.getAmountError(),  
         address,
         asset:asset,
         destination,
         amount,
-        isValid
+        isValid,
+
+        onSend:this.onSend,
+        showConfirmSendModal,
+        onCancelModal:this.onCancelModal,
+        onSubmit:this.onSubmit,
+        
 
     }}/>
   } 
 }
 
-export default omniSend(injectIntl(SendPage));
+export default omniSend(SendPage);

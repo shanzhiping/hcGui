@@ -10,7 +10,7 @@
             </div> 
             {
                 assetsDatas.map(item=>{
-                    return  <div key={item.name}>
+                    return  <div key={item.propertyid}>
                                 <div>{item.name}</div>
                                 <div>{item.balance}</div> 
                             </div>
