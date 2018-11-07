@@ -5247,7 +5247,13 @@ msgctxt "omni.browseType.wallet"
 msgid "wallet"
 msgstr "钱包"
 
-
+#. [omni.assets.details.visitUrl]
+#. defaultMessage is:
+#. For more information please visit:
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.details.visitUrl"
+msgid "For more information please visit:"
+msgstr "获取更多信息请访问:"
 
 
 

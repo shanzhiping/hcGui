@@ -19,6 +19,10 @@ class SendPage extends React.Component {
       showConfirmSendModal:false, 
     };
   }
+
+  componentDidMount=()=>{
+    this.props.getwalletaddressbalances();
+  }
   onCancelModal=()=>{
     this.setState({showConfirmSendModal:false});
   }
@@ -64,7 +68,7 @@ class SendPage extends React.Component {
     } 
   }
 
-  onAssetsChange=(asset)=>{
+  onAssetsChange=(asset)=>{ 
     if(asset!==this.state.asset){
       this.setState({asset,address:asset.addressData[0]})
     } 
@@ -76,14 +80,7 @@ class SendPage extends React.Component {
   }
   onSend=() =>{
     if (!this.getIsValid()) return;
-    this.setState({showConfirmSendModal:true})
-    // const { send_func,onAttemptSignTransaction,unsignedTransaction,nextAddressAccount } = this.props; 
-    // const {address,destination,amount,asset} =this.state;  
-    
-    // if (!privpass || !this.getIsValid()) return;
-    // onAttemptSignTransaction && onAttemptSignTransaction(privpass, unsignedTransaction);
-    // send_func && nextAddressAccount && send_func({fromaddress:address.address,toaddress:destination,propertyid:asset.propertyid,amount:amount});
-    // this.onClearTransaction();
+    this.setState({showConfirmSendModal:true}) 
   }
 
   onSubmit=()=>{ 
@@ -91,7 +88,7 @@ class SendPage extends React.Component {
 
     const { send_func } = this.props; 
     const {address,destination,amount,asset} =this.state;  
-    send_func  && send_func({fromaddress:address.address,toaddress:destination,propertyid:asset.propertyid,amount:amount});
+    send_func  && send_func({fromaddress:address.address,toaddress:destination,propertyid:address.propertyid,amount:amount});
     this.onClearTransaction();
   }
 

@@ -60,10 +60,10 @@ class AssetsInfoForm extends React.PureComponent {
     divisibleEnum = () => [
         {
             text: this.props.intl.formatMessage(messages.divisibleEnumToYeskey),
-            value: "2",
+            value: 2,
         }, {
             text: this.props.intl.formatMessage(messages.divisibleEnumToNokey),
-            value: "1",
+            value: 1,
         }
     ]
 

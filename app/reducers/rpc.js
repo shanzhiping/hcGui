@@ -2,7 +2,7 @@ import {
     GETOMNISERVICE_ATTEMPT, GETOMNISERVICE_SUCCESS, GETOMNISERVICE_FAILED, OMNIGETWALLETADDRESSBALANCES_SUCCESS, OMNIGETWALLETADDRESSBALANCES_FAILED
     , OMNILISTPROPERTIES_SUCCESS, OMNIGETTRADEHISTORYFORADDRESS_SUCCESS, OMNIGETTRADEHISTORYFORADDRESS_FAILED, OMNILISTTRANSACTIONS_SUCCESS,
     OMNILISTTRANSACTIONS_ATTEMPT, OMNILISTTRANSACTIONS_FAILED, OMNIGETTRADEHISTORY_SUCCESS, OMNIGETTRADEHISTORY_FAILED,
-    OMNISENDISSUANCEFIXED_SUCCESS, OMNISENDISSUANCEFIXED_FAILED,
+    OMNISENDISSUANCEFIXED_SUCCESS, OMNISENDISSUANCEFIXED_FAILED, OMNIGETPROPERTY_SUCCESS
 } from "../actions/OmniActions";
 
 export default function rpc(state = {}, action) {
@@ -98,6 +98,12 @@ export default function rpc(state = {}, action) {
                 ...state,
                 sendissuancefixedError: String(action.error),
                 sendissuancefixedRequestAttempt: true
+            }
+        case OMNIGETPROPERTY_SUCCESS:
+            return {
+                ...state,
+                property: action.property,
+                getPropertyRequestAttempt: false
             }
         default:
             return state;

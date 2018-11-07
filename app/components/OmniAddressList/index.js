@@ -10,10 +10,10 @@ const messages=defineMessages({
         id:'omni.addressPage.publicKey',
         defaultMessage:"public key"
     },
-    menuItemToPublicSignMessage:{
-        id:'omni.addressPage.signMessage',
-        defaultMessage:"Sign Message"
-    }
+    // menuItemToPublicSignMessage:{
+    //     id:'omni.addressPage.signMessage',
+    //     defaultMessage:"Sign Message"
+    // }
 }) 
 
  class index extends React.PureComponent {

@@ -38,8 +38,9 @@ import OmniAssetsIndex from './components/views/OmniToken/AssetsTab/Overview';
 import OmniAssetsIssue from './components/views/OmniToken/AssetsTab/Issue';
 import OmniAssetsManaged from './components/views/OmniToken/AssetsTab/Managed';
 import OmniAssetsCrowdsale from './components/views/OmniToken/AssetsTab/Crowdsale';
-import OmniHistoryPage from './components/views/OmniToken/HistoryTab/HistoryPage'
-import OmniHistoryDetail from './components/views/OmniToken/HistoryTab/detail'
+import OmniHistoryPage from './components/views/OmniToken/HistoryTab/HistoryPage';
+import OmniHistoryDetail from './components/views/OmniToken/HistoryTab/detail';
+import OmniAssetsDetail from './components/views/OmniToken/AssetsTab/Overview/details'
 
 export default (
   <Route path="/" component={App}>
@@ -74,6 +75,7 @@ export default (
       <Route path="addressest" component={AddressestTab} />
       <Route path="assets" component={AssetsTab}>
         <IndexRoute component={OmniAssetsIndex} />
+        <Route path="details/:propertyid" component={OmniAssetsDetail}/>
         <Route path="crowdsale" component={OmniAssetsCrowdsale} />
         <Route path="issue" component={OmniAssetsIssue} />
         <Route path="managed" component={OmniAssetsManaged} />

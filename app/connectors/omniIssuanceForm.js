@@ -12,7 +12,7 @@ const mapStateToProps = selectorMap({
   const mapDispatchToProps = (dispatch) => bindActionCreators({ 
     getCategories:oa.getCategories,
     sendIssuanceFixed:oa.sendIssuanceFixed_func,
-    sendIssuanceManaged:oa.sendIssuanceManaged_func
+    sendIssuanceManaged:oa.sendIssuanceManaged_func,
   }, dispatch);
   
   export default connect(mapStateToProps,mapDispatchToProps);

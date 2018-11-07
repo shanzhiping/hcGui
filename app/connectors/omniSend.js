@@ -4,7 +4,7 @@ import { bindActionCreators } from "redux";
 import { selectorMap } from "../fp";
 import * as sel from "selectors";
 import * as ca from "../actions/ControlActions";
-import * as om from "../actions/OmniActions";
+import * as oa from "../actions/OmniActions";
 
 
 const mapStateToProps = selectorMap({ 
@@ -15,9 +15,10 @@ const mapStateToProps = selectorMap({
 
   const mapDispatchToProps = (dispatch) => bindActionCreators({
     validateAddress: ca.validateAddress,
-    send_func:om.send_func,
+    send_func:oa.send_func,
     onAttemptSignTransaction: ca.signTransactionAttempt,
-    onAttemptConstructTransaction:ca.constructTransactionAttempt
+    onAttemptConstructTransaction:ca.constructTransactionAttempt,
+    getwalletaddressbalances:oa.getwalletaddressbalances_func
   }, dispatch);
   
   export default connect(mapStateToProps,mapDispatchToProps);

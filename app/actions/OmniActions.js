@@ -10,7 +10,7 @@ export const GETOMNISERVICE_ATTEMPT = "GETOMNISERVICE_ATTEMPT";
 export const GETOMNISERVICE_SUCCESS = "GETOMNISERVICE_SUCCESS";
 export const GETOMNISERVICE_FAILED = "GETOMNISERVICE_FAILED";
 export const getOmniServiceAttempt = () => (dispatch, getState) => {
-  const { grpc: { address, port } } = getState();
+  const { grpc: { address, port } } = getState(); 
   dispatch({ omniService: getOmnitService(sel.isTestNet(getState()), address), type: GETOMNISERVICE_SUCCESS });
 
   loadOmniDataAttempt(dispatch, getState);
@@ -98,6 +98,20 @@ export const listproperties_func = () => async (dispatch, getState) => {
     dispatch({ type: OMNILISTPROPERTIES_SUCCESS, listproperties })
   } catch (error) {
     console.error(error);
+  }
+}
+ 
+export const OMNIGETPROPERTY_SUCCESS = "OMNIGETPROPERTY_SUCCESS";
+export const OMNIGETPROPERTYT_FAILED = "OMNIGETPROPERTYT_FAILED";
+export const getproperty_func= (propertyid) => async (dispatch, getState) => {
+  
+  try {
+    const { omniService } = getState().rpc;  
+    const property = await omni_getproperty(omniService,{propertyid});
+    dispatch({ type: OMNIGETPROPERTY_SUCCESS, property })
+  } catch (error) {
+    console.error(error, ' getproperty_func  error')
+    dispatch({ type: OMNIGETPROPERTYT_FAILED, error })
   }
 }
 

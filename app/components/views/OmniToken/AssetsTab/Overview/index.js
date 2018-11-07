@@ -19,9 +19,12 @@ const messages=defineMessages({
 
 })
 
-class OverviewPage extends React.Component {
+class OverviewPage extends React.PureComponent {
     constructor(props) {
         super(props); 
+    }
+    componentDidMount=()=>{
+        this.props.listpropertiesFunc();
     }
     onAssesTypesChanged = (value) => { 
         this.props.router.push(`/omni/assets/${value}`)
@@ -30,16 +33,19 @@ class OverviewPage extends React.Component {
     assetsTypes =()=> [{
         text: this.props.intl.formatMessage(messages.assetsTypeToIssueKey),
         value: 'issue'
-    }, {
-        text: this.props.intl.formatMessage(messages.assetsTypeToCrowdsaleKey),
-        value: 'crowdsale'
-    }, {
+    }
+    // , {
+    //     text: this.props.intl.formatMessage(messages.assetsTypeToCrowdsaleKey),
+    //     value: 'crowdsale'
+    // }
+    , {
         text:  this.props.intl.formatMessage(messages.assetsTypeToManagedKey),
         value: 'managed'
     }]
 
+
     render() {
-        const {listproperties} =this.props;
+        const {listproperties,router} =this.props;
         return (
             <div>
                 <Screen {...{
@@ -47,7 +53,7 @@ class OverviewPage extends React.Component {
                     onAssesTypesChanged:this.onAssesTypesChanged
                 }} />
                 <AssetsList {
-                   ...{listproperties}
+                   ...{listproperties,router}
                 }/>
             </div>
         )
