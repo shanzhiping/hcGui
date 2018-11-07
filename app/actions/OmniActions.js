@@ -160,7 +160,7 @@ export const sendIssuanceFixed_func = (params) => async (dispatch, getState) => 
 
 export const OMNISENDISSUANCEMANAGED_SUCCESS = "OMNISENDISSUANCEMANAGED_SUCCESS";
 export const OMNISENDISSUANCEMANAGED_FAILED = "OMNISENDISSUANCEMANAGED_FAILED";
-export const sendIssuanceManaged_func = () => async (dispatch, getState) => {
+export const sendIssuanceManaged_func = (params) => async (dispatch, getState) => {
   try {
     const { omniService } = getState().rpc;
     await omni_sendissuancemanaged(omniService, params);
