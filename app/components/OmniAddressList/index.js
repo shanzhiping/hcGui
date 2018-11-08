@@ -43,11 +43,13 @@ const messages=defineMessages({
     menuItemDatas=()=>[{
         value:'pubKey',
         text:this.props.intl.formatMessage(messages.menuItemToPublicKey),
-    },
-    {
-      value:'signMessage',
-      text:this.props.intl.formatMessage(messages.menuItemToPublicSignMessage),
-    }]
+    }
+    // ,
+    // {
+    //   value:'signMessage',
+    //   text:this.props.intl.formatMessage(messages.menuItemToPublicSignMessage),
+    // }
+]
 
     onMenuChanged= address => value =>{ 
         if(value==='pubKey'){

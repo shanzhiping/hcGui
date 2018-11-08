@@ -55,7 +55,7 @@ const SendTabPage = ({
                     </div>
                     <div className="sendForm-panel">
                         <div>
-                            <T id="omni.send.field.sendAddress" m="Send address" />
+                            <T id="omni.send.field.sendAddress" m="Sender" />
                         </div>
                         <div><InputSelect className="send-select-account-input" {...{
                             datas: addressList,
@@ -87,7 +87,7 @@ const SendTabPage = ({
                         </div>
                     </div>
                     <div className="sendForm-panel">
-                        <div><T id="omni.send.field.ReceivingAddress" m="Receiving address" /></div>
+                        <div><T id="omni.send.field.Recipient" m="Recipient" /></div>
                         <div>
                             <AddressInput
                                 autoFocus={true}

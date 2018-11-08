@@ -3,6 +3,7 @@ import Card from "card";
 import { Input, InputSelect, TextArea } from "inputs";
 import { omniIssuanceForm } from "connectors";
 import { FormattedMessage as T ,injectIntl,defineMessages} from "react-intl"; 
+import {getByteLen} from "helpers"
 import "style/omniForm.less";
 
 const messages=defineMessages({
@@ -85,8 +86,8 @@ class AssetsInfoForm extends React.PureComponent {
    
 
     onAssetDescriptionChange = (value) => { 
-        if (value !== this.props.description) {
-            this.setState({ tips: this.props.intl.formatMessage(messages.tipskey, { tips: 255 - value.length }) });
+        if (value !== this.props.description && !(this.state.descriptionMaxLength - getByteLen(value)<0)) {
+            this.setState({ tips: this.props.intl.formatMessage(messages.tipskey, { tips: this.state.descriptionMaxLength - getByteLen(value) }) });
             this.props.onAssetDescriptionChange && this.props.onAssetDescriptionChange(value);
         }
     }

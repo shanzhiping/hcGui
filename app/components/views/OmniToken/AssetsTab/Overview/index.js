@@ -6,7 +6,7 @@ import { FormattedMessage as T, injectIntl, defineMessages } from "react-intl";
 const messages=defineMessages({
     assetsTypeToIssueKey:{
         id:"omni.myAssets.Type.issue",
-        defaultMessage:"Intelligent assets"
+        defaultMessage:"Intelligent Assets"
     },
     assetsTypeToCrowdsaleKey:{
         id:"omni.myAssets.Type.crowdsale",
@@ -14,7 +14,7 @@ const messages=defineMessages({
     },
     assetsTypeToManagedKey:{
         id:"omni.myAssets.Type.managed",
-        defaultMessage:"Management assets"
+        defaultMessage:"Managed  Assets"
     }
 
 })

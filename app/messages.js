@@ -30,7 +30,7 @@ export default defineMessages({
   "omni.title":                               { id: "omni.title",                         defaultMessage: "Omni Token" },
   "omni.description":                         { id: "omni.description",                   defaultMessage: "——" },
   "omni.tab.overview":                        { id: "omni.tab.overview",                  defaultMessage: "Overview" },
-  "omni.tab.addressest":                      { id: "omni.tab.addressest",                 defaultMessage: "My Addressest" },
+  "omni.tab.addresses":                      { id: "omni.tab.addresses",                 defaultMessage: "My Addresses" },
   "omni.tab.assets":                          { id: "omni.tab.assets",                defaultMessage: "My Assets" },
   "omni.tab.history":                         { id: "omni.tab.history",                defaultMessage: "History" },
   "omni.tab.send":                            { id: "omni.tab.send",                defaultMessage: "Send" },

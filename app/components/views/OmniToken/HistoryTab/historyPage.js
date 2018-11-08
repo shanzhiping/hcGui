@@ -9,7 +9,7 @@ const optionAll={
     value: "*",
 }
 
-class HistoryPage extends React.Component {
+class HistoryPage extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -18,6 +18,10 @@ class HistoryPage extends React.Component {
             indexPage: 0
         }
     } 
+
+    componentDidMount=()=>{
+        this.getListtransactions("*",this.state.indexPage)
+    }
 
     getListtransactions=(txid,indexPage)=>{ 
         this.props.getListtransactions({

@@ -178,14 +178,14 @@ if (argv.testnet && argv.mainnet) {
 let daemonIsAdvanced = globalCfg.get("daemon_start_advanced");
 
 function closeHCW() {
-  if (require("is-running")(hcwPID) && os.platform() != "win32") {
+  if (require("is-running")(hcwPID)) {
     logger.log("info", "Sending SIGINT to hcwallet at pid:" + hcwPID);
     process.kill(hcwPID, "SIGINT");
   }
 }
 
 function closeHCD() {
-  if (require("is-running")(hcdPID) && os.platform() != "win32") {
+  if (require("is-running")(hcdPID)) {
     logger.log("info", "Sending SIGINT to hcd at pid:" + hcdPID);
     process.kill(hcdPID, "SIGINT");
   }
@@ -489,7 +489,7 @@ const launchHCD = (walletPath, appdata, testnet) => {
   hcd.on("close", (code) => {
     if (daemonIsAdvanced)
       return;
-    if (code !== 0) {
+    if (code !== 0 && require("is-running")(hcdPID)) {
       logger.log("error", "hcd closed due to an error.  Check hcd logs and contact support if the issue persists.");
       mainWindow.webContents.executeJavaScript("alert(\"hcd closed due to an error.  Check hcd logs and contact support if the issue persists.\");");
       mainWindow.webContents.executeJavaScript("window.close();");
@@ -579,7 +579,7 @@ const launchHCWallet = (walletPath, testnet) => {
   hcwallet.on("close", (code) => {
     if(daemonIsAdvanced)
       return;
-    if (code !== 0) {
+    if (code !== 0 && require("is-running")(hcwPID)) { 
       logger.log("error", "hcwallet closed due to an error.  Check hcwallet logs and contact support if the issue persists.");
       mainWindow.webContents.executeJavaScript("alert(\"hcwallet closed due to an error.  Check hcwallet logs and contact support if the issue persists.\");");
       mainWindow.webContents.executeJavaScript("window.close();");

@@ -160,11 +160,12 @@ export const send_func = (params) => async (dispatch, getState) => {
 
 export const OMNISENDISSUANCEFIXED_SUCCESS = "OMNISENDISSUANCEFIXED_SUCCESS";
 export const OMNISENDISSUANCEFIXED_FAILED = "OMNISENDISSUANCEFIXED_FAILED";
-export const sendIssuanceFixed_func = (params) => async (dispatch, getState) => {
+export const sendIssuanceFixed_func = (params,callBack) => async (dispatch, getState) => {
   try {
     const { omniService } = getState().rpc;
     await omni_sendissuancefixed(omniService, params);
-    dispatch({ type: OMNISENDISSUANCEFIXED_SUCCESS })
+    dispatch({ type: OMNISENDISSUANCEFIXED_SUCCESS });
+    callBack && callBack();
     loadOmniDataAttempt(dispatch, getState);
   } catch (error) {
     console.error(error, ' sendissuancefixed_func  error ')
@@ -174,11 +175,12 @@ export const sendIssuanceFixed_func = (params) => async (dispatch, getState) => 
 
 export const OMNISENDISSUANCEMANAGED_SUCCESS = "OMNISENDISSUANCEMANAGED_SUCCESS";
 export const OMNISENDISSUANCEMANAGED_FAILED = "OMNISENDISSUANCEMANAGED_FAILED";
-export const sendIssuanceManaged_func = (params) => async (dispatch, getState) => {
+export const sendIssuanceManaged_func = (params,callBack) => async (dispatch, getState) => {
   try {
     const { omniService } = getState().rpc;
     await omni_sendissuancemanaged(omniService, params);
-    dispatch({ type: OMNISENDISSUANCEFIXED_SUCCESS })
+    dispatch({ type: OMNISENDISSUANCEFIXED_SUCCESS });
+    callBack && callBack();
     loadOmniDataAttempt(dispatch, getState);
   } catch (error) {
     console.error(error, ' sendissuancemanaged_func  error ')

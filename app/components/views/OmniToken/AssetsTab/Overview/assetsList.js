@@ -6,7 +6,7 @@ const AssetsList = ({ listproperties,router }) => (
     <div className="omni-history-list">
         <div className="omni-history-list-header">
             <div><T id="omni.myAssets.Field.PropertyId" m="PropertyId" /></div>
-            <div><T id="omni.myAssets.Field.Assets" m="Assets" /></div>
+            <div><T id="omni.myAssets.Field.Assets" m="Name" /></div>
             <div>
                 <T id="omni.myAssets.Field.TotalTokens" m="TotalTokens" />
             </div>
@@ -20,7 +20,7 @@ const AssetsList = ({ listproperties,router }) => (
                 <div key={item.propertyid}>
                     <div>{item.propertyid} </div>
                     <div><a className="stakepool-link" onClick={()=>{
-                        router.push("/omni/assets/details/1",item)
+                        router.push(`/omni/assets/details/${item.propertyid}`,item)
                     }}>{item.name}</a></div>  
                     <div>{item.detail.totaltokens}</div>
                     <div><a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, item.url)}>{item.url}</a></div>

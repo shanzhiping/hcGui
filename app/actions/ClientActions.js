@@ -58,7 +58,7 @@ export const GETSTARTUPWALLETINFO_ATTEMPT = "GETSTARTUPWALLETINFO_ATTEMPT";
 export const GETSTARTUPWALLETINFO_SUCCESS = "GETSTARTUPWALLETINFO_SUCCESS";
 export const GETSTARTUPWALLETINFO_FAILED = "GETSTARTUPWALLETINFO_FAILED";
 
-export const getStartupWalletInfo = () => (dispatch) => {
+export const getStartupWalletInfo = () => (dispatch) => { 
   dispatch({ type: GETSTARTUPWALLETINFO_ATTEMPT });
   setTimeout(() => { dispatch(getStakeInfoAttempt()); }, 1000);
   setTimeout(() => { dispatch(getTicketsInfoAttempt()); }, 1000);

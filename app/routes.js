@@ -30,7 +30,7 @@ import InvalidRPCVersion from "./components/views/InvalidRPCVersion";
 import ShutdownAppPage from "./components/views/ShutdownAppPage";
 
 import OverviewTab from './components/views/OmniToken/OverviewTab';
-import AddressestTab from './components/views/OmniToken/AddressestTab';
+import AddressesTab from './components/views/OmniToken/AddressestTab';
 import AssetsTab from './components/views/OmniToken/AssetsTab';
 import OmniSendTab from './components/views/OmniToken/SendTab';
 import OmniHistoryTab from './components/views/OmniToken/HistoryTab';
@@ -72,7 +72,7 @@ export default (
     <Route path="omni" component={TabbedPage} desc omni>
       <IndexRedirect to="overview" />
       <Route path="overview" component={OverviewTab} />
-      <Route path="addressest" component={AddressestTab} />
+      <Route path="addresses" component={AddressesTab} />
       <Route path="assets" component={AssetsTab}>
         <IndexRoute component={OmniAssetsIndex} />
         <Route path="details/:propertyid" component={OmniAssetsDetail}/>

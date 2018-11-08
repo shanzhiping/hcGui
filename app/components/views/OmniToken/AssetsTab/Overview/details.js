@@ -1,6 +1,7 @@
 import { shell } from "electron";
 import { FormattedMessage as T } from "react-intl";
 import Card from "card";
+import {KeyBlueButton} from "buttons"; 
 import { omniassetsDetails } from "connectors"
 import "style/omniAssetsDetails.less";
 
@@ -9,25 +10,38 @@ class Index extends React.PureComponent {
         super(props);
     }
 
-    componentDidMount = () => { 
+    componentDidMount = () => {
         this.props.getproperty(parseInt(this.props.params.propertyid));
     }
 
     render() {
-        const { property,isTestNet } = this.props;
+        const { property, isTestNet, router } = this.props;
         return (<div>{property ? <div className="omni-asstes-details">
             <Card title={<div>{property.name} <span>(#{property.propertyid})</span></div>}>
                 <div className="omni-asstes-details-Basics">
                     <div>
                         {property.data}
-                        </div>
+                    </div>
                     <div><T id="omni.assets.details.visitUrl" m="For more information please visit:" />
-                        <a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, property.url)}> {property.url}</a>  
+                        <a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, property.url)}> {property.url}</a>
                     </div>
-                   
+
                     <div>
-                        <T id="omni.assets.infoForm.issueAddress" m="Issue address"/>:<a href="#"> </a><a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, `https://${isTestNet?"testnet-":""}hcomni-explorer.h.cash/address/${property.issuer}`)}> {property.issuer}</a>  
+                        <T id="omni.assets.infoForm.issueAddress" m="Issue address" />:<a href="#"> </a><a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, `https://${isTestNet ? "testnet-" : ""}hcomni-explorer.h.cash/address/${property.issuer}`)}> {property.issuer}</a>
                     </div>
+                </div>
+            </Card>
+            <Card>
+                <div className="hc-card-buttons">
+                    <KeyBlueButton
+                        size="large"
+                        className="hc-card-buttons-exit"
+                        onClick={() => {
+                            router.goBack()
+                        }}
+                        block={false} >
+                        <T id="formButton.quit" m="Quit" />
+                    </KeyBlueButton>
                 </div>
             </Card>
             {/* <Card title="Asset History">

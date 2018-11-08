@@ -104,7 +104,9 @@ class Issue extends React.Component {
                 subcategory: subCategory.categoryName,
                 name: name,
                 url: url,
-                data: description
+                data: description,
+            },()=>{
+                this.quit();
             });
         } else {
             this.props.sendIssuanceFixed && this.props.sendIssuanceFixed({
@@ -118,8 +120,13 @@ class Issue extends React.Component {
                 url: url,
                 data: description,
                 amount: amount
+            },()=>{
+                this.quit();
             });
         }
+    }
+    quit=()=>{
+        this.props.router.goBack();
     }
     render() {
         const { nameError, urlError, amountError, showConfirmAssetsModal } = this.state;
