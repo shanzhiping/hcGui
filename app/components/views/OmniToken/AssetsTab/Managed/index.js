@@ -5,7 +5,7 @@ const ManagedPage = ({ router}) => (
     <IssuancePage 
         {
             ...{
-                tabTitle:<T id="omni.managePage.title" m="Creating management assets"/>,
+                tabTitle:<T id="omni.managedPage.title" m="Creating management assets"/>,
                 formType:"managed",
                 router
             }

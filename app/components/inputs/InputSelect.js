@@ -1,5 +1,4 @@
-import Select from "react-select";
-import { accountsSelect } from "connectors";
+import Select from "react-select"; 
 import { injectIntl, defineMessages, intlShape } from "react-intl";
 
 const messages = defineMessages({
@@ -18,6 +17,7 @@ class InputSelect extends React.Component {
     valueKey:PropTypes.string,
     labelKey:PropTypes.string,
     spendableKey:PropTypes.string,
+    disabled:PropTypes.bool,
   };
 
   constructor(props) {
@@ -34,10 +34,10 @@ class InputSelect extends React.Component {
   }
   render() {
     const { formatMessage } = this.props.intl;
-    const { className,datas,valueKey,labelKey } = this.props; 
+    const { className,datas,valueKey,labelKey,disabled } = this.props; 
     return (
       <div className={className}>
-        <Select
+        <Select 
           clearable={false}
           style={{zIndex:"9"}}
           placeholder={formatMessage(messages.placeholder)}
@@ -50,6 +50,7 @@ class InputSelect extends React.Component {
           optionRenderer={this.valueRenderer}
           onChange={this.onChangeAccount}
           className="accounts-select"
+          disabled={disabled} 
         />
       </div>
     );

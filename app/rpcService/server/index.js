@@ -100,7 +100,36 @@ export function omni_sendissuancefixed(omniService, params) {
 export function omni_sendissuancemanaged(omniService, params) {
     return omniService(omniMethod.sendissuancemanaged, objToArray(params));
 }
+/**
+ * @param {fromaddress	string	required	the address associated with the tokens}
+ * @param {toaddress	string	required	the address to transfer administrative control to}
+ * @param {propertyid	number	required	the identifier of the tokens}
+ */
+export function omni_sendchangeissuer(omniService, params) {
+    return omniService(omniMethod.sendchangeissuer, objToArray(params));
+}
 
+/**
+ * @param {fromaddress	string	required	the address to send from}
+ * @param {toaddress	string	required	the receiver of the tokens (sender by default, can be "")}
+ * @param {propertyid	number	required	the identifier of the tokens to grant}
+ * @param {amount	string	required	the amount of tokens to create}
+ * @param {memo	string	optional	a text note attached to this transaction (none by default)}
+ */
+export function omni_sendgrant(omniService, params){
+    return omniService(omniMethod.sendgrant, objToArray(params));
+}
+
+/**
+ * 
+ * @param {fromaddress	string	required	the address to send from}
+ * @param {propertyid	number	required	the identifier of the tokens to revoke}
+ * @param {amount	string	required	the amount of tokens to revoke}
+ * @param {memo	string	optional	a text note attached to this transaction (none by default)}  
+ */
+export function omni_sendrevoke(omniService, params){
+    return omniService(omniMethod.sendrevoke, objToArray(params));
+}
 
 
 export function omni_getCategories() {

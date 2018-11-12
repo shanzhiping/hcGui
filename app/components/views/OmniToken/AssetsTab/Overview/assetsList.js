@@ -18,9 +18,13 @@ const AssetsList = ({ listproperties,router }) => (
 
             {listproperties ? listproperties.map(item => (
                 <div key={item.propertyid}>
-                    <div>{item.propertyid} </div>
+                    <div>{item.propertyid}<a  className="stakepool-link" onClick={()=>{
+                        router.push({pathname:`/omni/assets/manage/${item.propertyid}`,
+                        query:item.detail})
+                    }}> (Manage) </a></div>
                     <div><a className="stakepool-link" onClick={()=>{
-                        router.push(`/omni/assets/details/${item.propertyid}`,item)
+                        router.push({pathname:`/omni/assets/details/${item.propertyid}`,
+                        query:item.detail})
                     }}>{item.name}</a></div>  
                     <div>{item.detail.totaltokens}</div>
                     <div><a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, item.url)}>{item.url}</a></div>

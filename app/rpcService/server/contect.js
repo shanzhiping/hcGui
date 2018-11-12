@@ -12,5 +12,8 @@
     sendissuancefixed:"omni_sendissuancefixed",
     sendissuancemanaged:"omni_sendissuancemanaged",
     getproperty:"omni_getproperty",
+    sendchangeissuer:"omni_sendchangeissuer",
+    sendgrant:"omni_sendgrant",
+    sendrevoke:"omni_sendrevoke",
  }
 

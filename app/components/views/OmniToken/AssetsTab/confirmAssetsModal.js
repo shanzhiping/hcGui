@@ -1,5 +1,6 @@
 
-import {ConfirmAssetsModalContent,ConfirmModal} from "modals"
+import {ConfirmAssetsModalContent,ConfirmModal} from "modals";
+import { FormattedMessage as T} from "react-intl"; 
 
 export default ({ show, onCancelModal, name,
     category,
@@ -9,7 +10,7 @@ export default ({ show, onCancelModal, name,
     address,
     amount,
     onSubmit }) => (<ConfirmModal
-        modalTitle="确认资产创建"
+        modalTitle={<T id="omni.confirm.CreateAssets" m="Create Assets" />}
         show={show}
         onCancelModal={onCancelModal}
         onSubmit={onSubmit}

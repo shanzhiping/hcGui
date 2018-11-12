@@ -10,24 +10,22 @@ class Index extends React.PureComponent {
         super(props);
     }
 
-    componentDidMount = () => {
-        this.props.getproperty(parseInt(this.props.params.propertyid));
-    }
+    
 
     render() {
-        const { property, isTestNet, router } = this.props;
-        return (<div>{property ? <div className="omni-asstes-details">
-            <Card title={<div>{property.name} <span>(#{property.propertyid})</span></div>}>
+        const {isTestNet, router ,location:{query}} = this.props;
+        return (<div>{query ? <div className="omni-asstes-details">
+            <Card title={<div>{query.name} <span>(#{query.propertyid})</span></div>}>
                 <div className="omni-asstes-details-Basics">
                     <div>
-                        {property.data}
+                        {query.data}
                     </div>
                     <div><T id="omni.assets.details.visitUrl" m="For more information please visit:" />
-                        <a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, property.url)}> {property.url}</a>
+                        <a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, query.url)}> {query.url}</a>
                     </div>
 
                     <div>
-                        <T id="omni.assets.infoForm.issueAddress" m="Issue address" />:<a href="#"> </a><a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, `https://${isTestNet ? "testnet-" : ""}hcomni-explorer.h.cash/address/${property.issuer}`)}> {property.issuer}</a>
+                        <T id="omni.assets.infoForm.issueAddress" m="Issue address" />:<a href="#"> </a><a className="stakepool-link" onClick={function (x) { shell.openExternal(x); }.bind(null, `https://${isTestNet ? "testnet-" : ""}hcomni-explorer.h.cash/address/${query.issuer}`)}> {query.issuer}</a>
                     </div>
                 </div>
             </Card>
@@ -53,43 +51,7 @@ class Index extends React.PureComponent {
 
                         </div>
                         <div>Nov 04, 2018 (03:43PM)</div>
-                    </div>
-                    <div>
-                        <div>
-                            <div>3 几天前</div>
-                            <div>T1104153701 被创建</div>
-
-                        </div>
-                        <div>Nov 04, 2018 (03:43PM)</div>
-                    </div> <div>
-                        <div>
-                            <div>3 几天前</div>
-                            <div>T1104153701 被创建</div>
-
-                        </div>
-                        <div>Nov 04, 2018 (03:43PM)</div>
-                    </div> <div>
-                        <div>
-                            <div>3 几天前</div>
-                            <div>T1104153701 被创建</div>
-
-                        </div>
-                        <div>Nov 04, 2018 (03:43PM)</div>
-                    </div> <div>
-                        <div>
-                            <div>3 几天前</div>
-                            <div>T1104153701 被创建</div>
-
-                        </div>
-                        <div>Nov 04, 2018 (03:43PM)</div>
-                    </div> <div>
-                        <div>
-                            <div>3 几天前</div>
-                            <div>T1104153701 被创建</div>
-
-                        </div>
-                        <div>Nov 04, 2018 (03:43PM)</div>
-                    </div>
+                    </div> 
                 </div>
             </Card> */}
         </div> : null}
@@ -99,4 +61,4 @@ class Index extends React.PureComponent {
 }
 
 
-export default omniassetsDetails(Index);
+export default Index;

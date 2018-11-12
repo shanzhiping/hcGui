@@ -2,7 +2,8 @@ import * as sel from "selectors";
 import { getOmnitService } from '../rpcService/rpc';
 import {
   omni_getwalletbalances, omni_listproperties, omni_getinfo, omni_getwalletaddressbalances, omni_send, omni_gettransaction, omni_gettradehistoryforpair,
-  omni_gettradehistoryforaddress, omni_getCategories, omni_listtransactions, omni_sendissuancefixed, omni_sendissuancemanaged, omni_getproperty
+  omni_gettradehistoryforaddress, omni_getCategories, omni_listtransactions, omni_sendissuancefixed, omni_sendissuancemanaged, omni_getproperty,
+  omni_sendchangeissuer, omni_sendgrant, omni_sendrevoke
 } from '../rpcService/server';
 
 
@@ -10,7 +11,7 @@ export const GETOMNISERVICE_ATTEMPT = "GETOMNISERVICE_ATTEMPT";
 export const GETOMNISERVICE_SUCCESS = "GETOMNISERVICE_SUCCESS";
 export const GETOMNISERVICE_FAILED = "GETOMNISERVICE_FAILED";
 export const getOmniServiceAttempt = () => (dispatch, getState) => {
-  const { grpc: { address, port } } = getState(); 
+  const { grpc: { address, port } } = getState();
   dispatch({ omniService: getOmnitService(sel.isTestNet(getState()), address), type: GETOMNISERVICE_SUCCESS });
 
   loadOmniDataAttempt(dispatch, getState);
@@ -89,7 +90,7 @@ export const listproperties_func = () => async (dispatch, getState) => {
     let index = 0;
     while (index < listproperties.length) {
 
-      const property = await omni_getproperty(omniService,{propertyid:listproperties[index].propertyid});
+      const property = await omni_getproperty(omniService, { propertyid: listproperties[index].propertyid });
       listproperties[index].detail = property;
       index++;
 
@@ -100,14 +101,14 @@ export const listproperties_func = () => async (dispatch, getState) => {
     console.error(error);
   }
 }
- 
+
 export const OMNIGETPROPERTY_SUCCESS = "OMNIGETPROPERTY_SUCCESS";
 export const OMNIGETPROPERTYT_FAILED = "OMNIGETPROPERTYT_FAILED";
-export const getproperty_func= (propertyid) => async (dispatch, getState) => {
-  
+export const getproperty_func = (propertyid) => async (dispatch, getState) => {
+
   try {
-    const { omniService } = getState().rpc;  
-    const property = await omni_getproperty(omniService,{propertyid});
+    const { omniService } = getState().rpc;
+    const property = await omni_getproperty(omniService, { propertyid });
     dispatch({ type: OMNIGETPROPERTY_SUCCESS, property })
   } catch (error) {
     console.error(error, ' getproperty_func  error')
@@ -160,7 +161,7 @@ export const send_func = (params) => async (dispatch, getState) => {
 
 export const OMNISENDISSUANCEFIXED_SUCCESS = "OMNISENDISSUANCEFIXED_SUCCESS";
 export const OMNISENDISSUANCEFIXED_FAILED = "OMNISENDISSUANCEFIXED_FAILED";
-export const sendIssuanceFixed_func = (params,callBack) => async (dispatch, getState) => {
+export const sendIssuanceFixed_func = (params, callBack) => async (dispatch, getState) => {
   try {
     const { omniService } = getState().rpc;
     await omni_sendissuancefixed(omniService, params);
@@ -175,7 +176,7 @@ export const sendIssuanceFixed_func = (params,callBack) => async (dispatch, getS
 
 export const OMNISENDISSUANCEMANAGED_SUCCESS = "OMNISENDISSUANCEMANAGED_SUCCESS";
 export const OMNISENDISSUANCEMANAGED_FAILED = "OMNISENDISSUANCEMANAGED_FAILED";
-export const sendIssuanceManaged_func = (params,callBack) => async (dispatch, getState) => {
+export const sendIssuanceManaged_func = (params, callBack) => async (dispatch, getState) => {
   try {
     const { omniService } = getState().rpc;
     await omni_sendissuancemanaged(omniService, params);
@@ -224,6 +225,50 @@ export const listtransactions_func = ({ txid, indexPage, callBack }) => async (d
     await dispatch({ type: OMNILISTTRANSACTIONS_FAILED, error, noMoreTransactions: true });
   }
 }
+export const OMNISENDCHANGEISSUER_SUCCESS = "OMNISENDCHANGEISSUER_SUCCESS";
+export const OMNISENDCHANGEISSUER_FAILED = "OMNISENDCHANGEISSUER_FAILED";
+export const sendChangeIssuer_func = (params,callBack) => async (dispatch, getState) => {
+  try {
+    const { omniService } = getState().rpc;
+    const data = await omni_sendchangeissuer(omniService, params);
+    callBack && callBack()
+    loadOmniDataAttempt(dispatch, getState);
+  } catch (error) {
+    console.error(error, ' sendissuancefixed_func  error ')
+    dispatch({ type: OMNISENDCHANGEISSUER_FAILED, error })
+  }
+}
+
+export const OMNISENDGRANT_SUCCESS = "OMNISENDGRANT_SUCCESS";
+export const OMNISENDGRANT_FAILED = "OMNISENDGRANT_FAILED";
+export const sendGrant_func = (params,callBack) => async (dispatch, getState) => {
+  try {
+    const { omniService } = getState().rpc;
+    const data = await omni_sendgrant(omniService, params);
+    callBack && callBack()
+    loadOmniDataAttempt(dispatch, getState);
+  } catch (error) {
+    console.error(error, ' sendissuancefixed_func  error ')
+    dispatch({ type: OMNISENDGRANT_FAILED, error })
+  }
+}
+
+export const OMNISENDREVOKE_SUCCESS = "OMNISENDREVOKE_SUCCESS";
+export const OMNISENDREVOKE_FAILED = "OMNISENDREVOKE_FAILED";
+export const sendrevoke_func = (params,callBack) => async (dispatch, getState) => {
+  try {
+    const { omniService } = getState().rpc;
+    const data = await omni_sendrevoke(omniService, params);
+    callBack && callBack()
+    loadOmniDataAttempt(dispatch, getState);
+  } catch (error) {
+    console.error(error, ' sendissuancefixed_func  error ')
+    dispatch({ type: OMNISENDREVOKE_FAILED, error })
+  }
+}
+//omni_sendgrant,omni_sendrevoke
+
+
 export const getCategories = () => async (dispatch, getState) => {
   return omni_getCategories();
 }

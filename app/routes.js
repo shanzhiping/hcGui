@@ -29,18 +29,19 @@ import ErrorScreen from "./components/ErrorScreen";
 import InvalidRPCVersion from "./components/views/InvalidRPCVersion";
 import ShutdownAppPage from "./components/views/ShutdownAppPage";
 
-import OverviewTab from './components/views/OmniToken/OverviewTab';
-import AddressesTab from './components/views/OmniToken/AddressestTab';
-import AssetsTab from './components/views/OmniToken/AssetsTab';
-import OmniSendTab from './components/views/OmniToken/SendTab';
-import OmniHistoryTab from './components/views/OmniToken/HistoryTab';
-import OmniAssetsIndex from './components/views/OmniToken/AssetsTab/Overview';
-import OmniAssetsIssue from './components/views/OmniToken/AssetsTab/Issue';
-import OmniAssetsManaged from './components/views/OmniToken/AssetsTab/Managed';
-import OmniAssetsCrowdsale from './components/views/OmniToken/AssetsTab/Crowdsale';
-import OmniHistoryPage from './components/views/OmniToken/HistoryTab/HistoryPage';
-import OmniHistoryDetail from './components/views/OmniToken/HistoryTab/detail';
-import OmniAssetsDetail from './components/views/OmniToken/AssetsTab/Overview/details'
+import OverviewTab from "./components/views/OmniToken/OverviewTab";
+import AddressesTab from "./components/views/OmniToken/AddressestTab";
+import AssetsTab from "./components/views/OmniToken/AssetsTab";
+import OmniSendTab from "./components/views/OmniToken/SendTab";
+import OmniHistoryTab from "./components/views/OmniToken/HistoryTab";
+import OmniAssetsIndex from "./components/views/OmniToken/AssetsTab/Overview";
+import OmniAssetsIssue from "./components/views/OmniToken/AssetsTab/Issue";
+import OmniAssetsManaged from "./components/views/OmniToken/AssetsTab/Managed";
+import OmniAssetsCrowdsale from "./components/views/OmniToken/AssetsTab/Crowdsale";
+import OmniHistoryPage from "./components/views/OmniToken/HistoryTab/HistoryPage";
+import OmniHistoryDetail from "./components/views/OmniToken/HistoryTab/detail";
+import OmniAssetsDetail from "./components/views/OmniToken/AssetsTab/Overview/details";
+import OmniAssetsManage from "./components/views/OmniToken/AssetsTab/manage";
 
 export default (
   <Route path="/" component={App}>
@@ -79,6 +80,7 @@ export default (
         <Route path="crowdsale" component={OmniAssetsCrowdsale} />
         <Route path="issue" component={OmniAssetsIssue} />
         <Route path="managed" component={OmniAssetsManaged} />
+        <Route path="manage/:propertyid" component={OmniAssetsManage} /> 
       </Route>
       <Route path="history" component={OmniHistoryTab}>
         <IndexRoute component={OmniHistoryPage} />

@@ -42,5 +42,6 @@ export { default as omniSend } from "./omniSend";
 export { default as omniHistory } from "./omniHistory";
 export { default as omniIssuanceForm } from "./omniIssuanceForm";
 export { default as omniIssuanceList } from "./omniIssuanceList";
-export { default as omniassetsDetails } from "./omniassetsDetails"
+export { default as omniassetsDetails } from "./omniassetsDetails";
+export { default as omniAssetsManage} from "./omniAssetsManage";
 
