@@ -357,3 +357,5 @@ export const rpcOptions={
     return isTestNet ? 12010 : 14010;
   }
 }
+
+export const dataRefreshVersion = "0002.0001.0004";

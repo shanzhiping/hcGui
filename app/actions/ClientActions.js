@@ -1,4 +1,5 @@
 // @flow
+import Store from "electron-store";
 import * as wallet from "wallet";
 import * as sel from "selectors";
 import eq from "lodash/fp/eq";
@@ -8,7 +9,7 @@ import { updateStakepoolPurchaseInformation, setStakePoolVoteChoices } from "./S
 import { getDecodeMessageServiceAttempt } from "./DecodeMessageActions";
 import { showSidebarMenu } from "./SidebarActions";
 import { push as pushHistory } from "react-router-redux";
-import { getWalletCfg } from "../config.js";
+import { getWalletCfg, dataRefreshVersion } from "../config.js";
 import { onAppReloadRequested } from "wallet";
 import { getTransactions as walletGetTransactions } from "wallet/service";
 import { TransactionDetails } from "middleware/walletrpc/api_pb";
@@ -40,15 +41,31 @@ function getWalletServiceSuccess(walletService) {
     // expectation of address use so rescan can be skipped.
     const { walletCreateExisting, walletCreateResponse } = getState().walletLoader;
     const { fetchHeadersResponse } = getState().walletLoader;
-    if (walletCreateExisting) {
+
+    let config = new Store(); 
+   
+    let hasRefresh = config.has("lastRefreshVersion") ? config.get("lastRefreshVersion") < dataRefreshVersion : true;
+    if (hasRefresh) {
+      config.set("lastRefreshVersion", dataRefreshVersion);
+    }
+    console.log(hasRefresh, config.has("lastRefreshVersion"),config.get("lastRefreshVersion") ,config.get("lastRefreshVersion") < dataRefreshVersion ,"=============wwwwww==========")
+
+    if (walletCreateExisting || hasRefresh) {
+      console.log("walletCreateExisting=============11111111111==========")
       setTimeout(() => {
         dispatch(rescanAttempt(0)).then(() => {
           dispatch(getStartupWalletInfo()).then(goHomeCb);
         });
       }, 1000);
     } else if (walletCreateResponse == null && fetchHeadersResponse != null && fetchHeadersResponse.getFirstNewBlockHeight() !== 0) {
-      setTimeout(() => { dispatch(rescanAttempt(fetchHeadersResponse.getFirstNewBlockHeight())).then(goHomeCb); }, 1000);
+      console.log("walletCreateExisting================22222222222222222222=======")
+      setTimeout(() => {
+        dispatch(rescanAttempt(fetchHeadersResponse.getFirstNewBlockHeight())).then(() => {
+          dispatch(getStartupWalletInfo()).then(goHomeCb);
+        });
+      }, 1000);
     } else {
+      console.log("walletCreateExisting================3333333333333333=======")
       dispatch(getStartupWalletInfo()).then(goHomeCb);
     }
   };
@@ -58,7 +75,7 @@ export const GETSTARTUPWALLETINFO_ATTEMPT = "GETSTARTUPWALLETINFO_ATTEMPT";
 export const GETSTARTUPWALLETINFO_SUCCESS = "GETSTARTUPWALLETINFO_SUCCESS";
 export const GETSTARTUPWALLETINFO_FAILED = "GETSTARTUPWALLETINFO_FAILED";
 
-export const getStartupWalletInfo = () => (dispatch) => { 
+export const getStartupWalletInfo = () => (dispatch) => {
   dispatch({ type: GETSTARTUPWALLETINFO_ATTEMPT });
   setTimeout(() => { dispatch(getStakeInfoAttempt()); }, 1000);
   setTimeout(() => { dispatch(getTicketsInfoAttempt()); }, 1000);

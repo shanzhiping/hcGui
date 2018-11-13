@@ -61,12 +61,12 @@ class HistoryPage extends React.PureComponent {
     render() {
         const { walletAddressBalances, listTransactions, noMoreTransactions } = this.props;
         const { selectAddress } = this.state;
-        const addressList = walletAddressBalances.map(item => {
+        const addressList =walletAddressBalances? walletAddressBalances.map(item => {
             return {
                 text: item.address,
                 value: item.address,
             }
-        })
+        }):[]
 
         const loadMoreThreshold = 90 + Math.max(0, this.props.window.innerHeight - 765);
         return (
