@@ -47,25 +47,20 @@ function getWalletServiceSuccess(walletService) {
     let hasRefresh = config.has("lastRefreshVersion") ? config.get("lastRefreshVersion") < dataRefreshVersion : true;
     if (hasRefresh) {
       config.set("lastRefreshVersion", dataRefreshVersion);
-    }
-    console.log(hasRefresh, config.has("lastRefreshVersion"),config.get("lastRefreshVersion") ,config.get("lastRefreshVersion") < dataRefreshVersion ,"=============wwwwww==========")
-
-    if (walletCreateExisting || hasRefresh) {
-      console.log("walletCreateExisting=============11111111111==========")
+    } 
+    if (walletCreateExisting || hasRefresh) { 
       setTimeout(() => {
         dispatch(rescanAttempt(0)).then(() => {
           dispatch(getStartupWalletInfo()).then(goHomeCb);
         });
       }, 1000);
-    } else if (walletCreateResponse == null && fetchHeadersResponse != null && fetchHeadersResponse.getFirstNewBlockHeight() !== 0) {
-      console.log("walletCreateExisting================22222222222222222222=======")
+    } else if (walletCreateResponse == null && fetchHeadersResponse != null && fetchHeadersResponse.getFirstNewBlockHeight() !== 0) { 
       setTimeout(() => {
         dispatch(rescanAttempt(fetchHeadersResponse.getFirstNewBlockHeight())).then(() => {
           dispatch(getStartupWalletInfo()).then(goHomeCb);
         });
       }, 1000);
-    } else {
-      console.log("walletCreateExisting================3333333333333333=======")
+    } else { 
       dispatch(getStartupWalletInfo()).then(goHomeCb);
     }
   };
