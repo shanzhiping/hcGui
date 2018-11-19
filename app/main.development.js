@@ -311,6 +311,7 @@ ipcMain.on("remove-wallet", (event, walletPath, testnet) => {
 });
 
 ipcMain.on("start-wallet", (event, walletPath, testnet) => {
+  newWalletConfigCreation(testnet, walletPath);
   if (hcwPID) {
     logger.log("info", "hcwallet already started " + hcwPID +hcwPort);
     mainWindow.webContents.send("hcwallet-port", hcwPort);

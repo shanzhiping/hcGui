@@ -59,7 +59,7 @@ class Issue extends React.Component {
         }
     }
     onAddressChange = (obj) => {
-        if (obj.address !== this.state.address) {
+        if (obj && obj.address !== this.state.address) {
             this.setState({ address: obj.address });
         }
     }

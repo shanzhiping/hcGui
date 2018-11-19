@@ -41,10 +41,10 @@ import { FormattedMessage as T } from "react-intl";
     render() {  
         const {walletAssetsBalances}  = this.props;
 
-        let row=null;
-        if(walletAssetsBalances){
+        let row=null; 
+        if(walletAssetsBalances && walletAssetsBalances.length>0){
              row = walletAssetsBalances.map(item=>{
-                return <AssetsRow key={item.name} {
+                return <AssetsRow key={item.propertyid} {
                     ...{ 
                         data:item,
                         onShowAssetsItem:this.onShowAssetsItem,
@@ -56,7 +56,7 @@ import { FormattedMessage as T } from "react-intl";
                 }/>
             })
         }else{
-            row = <div> <T id="omni.tables.noData" m="no data" /></div>
+            row = <div class="loading-more-transactions-indicator"> <T id="omni.tables.noData" m="no data" /></div>
         }
 
         return row

@@ -879,10 +879,11 @@ const numberEqual = (left, right) => {
 
 //const getState = state => state
 
-const ticketDataChartArray = []
+
 export const ticketDataChart = createSelector(
   [transactions, getState, currentBlockHeight,getStakeInfoResponse],
   (transactions, state, currentBlockHeight,stakeInfoResponse) => {
+    const ticketDataChartArray = []
     var immatureCount = 0;
     var liveCount = 0;
     var votedCount = 0;

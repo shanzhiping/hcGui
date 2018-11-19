@@ -88,7 +88,7 @@ class SendPage extends React.Component {
 
     const { send_func } = this.props; 
     const {address,destination,amount,asset} =this.state;  
-    send_func  && send_func({fromaddress:address.address,toaddress:destination,propertyid:address.propertyid,amount:amount});
+    send_func  && send_func({fromaddress:address.address,toaddress:destination,propertyid:asset.propertyid,amount:amount});
     this.onClearTransaction();
   }
 

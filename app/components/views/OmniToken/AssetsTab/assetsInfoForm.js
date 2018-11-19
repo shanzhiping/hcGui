@@ -79,7 +79,7 @@ class AssetsInfoForm extends React.PureComponent {
     onSubCategoryChange = (subCategory) => {
         if (subCategory !== this.state.subCategory) {
             this.setState({ subCategory });
-            this.props.onSubCategoryChange && this.props.onSubCategoryChange(subCategory.default ? null : subCategory);
+            this.props.onSubCategoryChange && this.props.onSubCategoryChange(!!subCategory.default ? null : subCategory);
         }
     }
 

@@ -75,7 +75,7 @@ const messages=defineMessages({
         const {showSignMessageModal,showPubKeyModal,addr,pubKey} =this.state;
 
         let row=null;
-        if(walletAddressBalances){
+        if(walletAddressBalances && walletAddressBalances.length>0){
              row =<div> 
                             {walletAddressBalances.map(item=>{
                             return <Row key={item.address} {
@@ -91,7 +91,7 @@ const messages=defineMessages({
                     <PubKeyModal  show={showPubKeyModal} onCancelModal={this.onCancelPubKeyModal} addr={addr} pubKey={pubKey}/>
                     </div>
         }else{
-            row = <div> <T id="omni.tables.noData" m="no data" /></div>
+            row = <div class="loading-more-transactions-indicator"> <T id="omni.tables.noData" m="no data" /></div>
         } 
         return row
     }
