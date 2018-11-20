@@ -4831,11 +4831,11 @@ msgstr "发送地址"
 
 #. [omni.send.field.sendAmount]
 #. defaultMessage is:
-#. Send {assetName} (Effective {assetName})
+#. Send {assetName} (Effective {balance})
 #: app/i18n/extracted/app/messages.json
 msgctxt "omni.send.field.sendAmount"
-msgid "Send {assetName} (Effective {assetName})"
-msgstr "发送 {assetName} (有效的： {assetName})"
+msgid "Send {assetName} (Effective {balance})"
+msgstr "发送 {assetName} (有效的： {balance})"
 
 #. [omni.send.field.Recipient]
 #. defaultMessage is:
@@ -4847,11 +4847,11 @@ msgstr "接受地址"
 
 #. [omni.send.tips.AvailableAddress]
 #. defaultMessage is:
-#. From available address: {balance} {assetName}
+#. From available address: {address}
 #: app/i18n/extracted/app/messages.json
 msgctxt "omni.send.tips.AvailableAddress"
-msgid "From available address: {balance} {assetName}"
-msgstr "从可用地址： {balance} {assetName}"
+msgid "From available address: {address}"
+msgstr "从可用地址： {address}"
 
 #. [omni.send.tips.errormassge]
 #. defaultMessage is:

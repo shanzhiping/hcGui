@@ -42,25 +42,25 @@ function getWalletServiceSuccess(walletService) {
     const { walletCreateExisting, walletCreateResponse } = getState().walletLoader;
     const { fetchHeadersResponse } = getState().walletLoader;
 
-    let config = new Store(); 
-   
+    let config = new Store();
+
     let hasRefresh = config.has("lastRefreshVersion") ? config.get("lastRefreshVersion") < dataRefreshVersion : true;
     if (hasRefresh) {
       config.set("lastRefreshVersion", dataRefreshVersion);
-    } 
-    if (walletCreateExisting || hasRefresh) { 
+    }
+    if (walletCreateExisting || hasRefresh || walletCreateResponse) {
       setTimeout(() => {
         dispatch(rescanAttempt(0)).then(() => {
           dispatch(getStartupWalletInfo()).then(goHomeCb);
         });
       }, 1000);
-    } else if (walletCreateResponse == null && fetchHeadersResponse != null && fetchHeadersResponse.getFirstNewBlockHeight() !== 0) { 
+    } else if (walletCreateResponse == null && fetchHeadersResponse != null && fetchHeadersResponse.getFirstNewBlockHeight() !== 0) {
       setTimeout(() => {
         dispatch(rescanAttempt(fetchHeadersResponse.getFirstNewBlockHeight())).then(() => {
           dispatch(getStartupWalletInfo()).then(goHomeCb);
         });
       }, 1000);
-    } else { 
+    } else {
       dispatch(getStartupWalletInfo()).then(goHomeCb);
     }
   };

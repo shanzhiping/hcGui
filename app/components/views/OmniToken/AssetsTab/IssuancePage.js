@@ -1,4 +1,5 @@
 import Screen from './issuanceScreen';
+import { FormattedMessage as T } from "react-intl";
 import IssuanceForm from './IssuanceForm';
 import ConfirmAssetsModal from "./confirmAssetsModal";
 import { omniIssuanceForm } from "connectors";
@@ -16,9 +17,11 @@ class Issue extends React.Component {
             category: null,
             subCategory: null,
             description: "",
-            address: null,
+
             amountError: "",
             amount: "",
+            address: null,
+            addressError: "",
 
             showConfirmAssetsModal: false,
         }
@@ -58,10 +61,30 @@ class Issue extends React.Component {
             this.setState({ description: value });
         }
     }
-    onAddressChange = (obj) => {
-        if (obj && obj.address !== this.state.address) {
-            this.setState({ address: obj.address });
-        }
+    onAddressChange = (address) => { 
+        let addressInvalid = false;
+        let updateDestinationState = () => { 
+            this.setState({
+                address,
+                addressInvalid
+            });
+        };
+
+        this.props.validateAddress(address)
+            .then(resp => {
+                addressInvalid = !resp.getIsValid();
+                updateDestinationState();
+            })
+            .catch(() => {
+                addressInvalid = false;
+                updateDestinationState();
+            });
+
+
+    }
+    getAddressError() {
+        const { address,addressInvalid } = this.state; 
+        if (!address || addressInvalid) return <T id="send.errors.invalidAddress" m="*Please enter a valid address" />;
     }
     onAmountChange = (value) => {
         if (value != this.state.amount) {
@@ -80,9 +103,9 @@ class Issue extends React.Component {
     }
 
     getIsValid = () => {
-        const { name, divisible, category, subCategory, url, description, address, amount } = this.state;
+        const { name, divisible, category, subCategory, url, description, address,addressInvalid, amount } = this.state;
         const { formType } = this.props;
-        return !!(name && divisible && category && subCategory && url && description && address && (amount || formType == "managed"));
+        return !!(name && divisible && category && subCategory && url && description && !(!address || addressInvalid) && (amount || formType == "managed"));
     }
 
 
@@ -105,7 +128,7 @@ class Issue extends React.Component {
                 name: name,
                 url: url,
                 data: description,
-            },()=>{
+            }, () => {
                 this.quit();
             });
         } else {
@@ -120,19 +143,19 @@ class Issue extends React.Component {
                 url: url,
                 data: description,
                 amount: amount
-            },()=>{
+            }, () => {
                 this.quit();
             });
         }
     }
-    quit=()=>{
+    quit = () => {
         this.props.router.goBack();
     }
     render() {
         const { nameError, urlError, amountError, showConfirmAssetsModal } = this.state;
 
-        const { name, category, subCategory, url, description, address, amount } = this.state;
-        const { router, tabTitle, formType } = this.props; 
+        const { name, category, subCategory, url, description, address, amount} = this.state;
+        const { router, tabTitle, formType } = this.props;
         const disabled = !this.getIsValid();
         return (
             <div>
@@ -162,7 +185,9 @@ class Issue extends React.Component {
                         router,
                         onNextStep: this.onNextStep,
                         disabled,
-                        amountDisabled: formType == "managed"
+                        amountDisabled: formType == "managed",
+                        address,
+                        addressError: this.getAddressError(),
                     }
                 } />
 

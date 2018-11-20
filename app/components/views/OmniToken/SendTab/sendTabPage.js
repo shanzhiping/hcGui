@@ -68,8 +68,8 @@ const SendTabPage = ({
                 <div className="omni-sendForm">
                     <div className="sendForm-panel">
                         <div>
-                            <T id="omni.send.field.sendAmount" m="Send {assetName} (Effective {assetName})"
-                                values={{ assetName: asset ? asset.name : "" }}
+                            <T id="omni.send.field.sendAmount" m="Send {assetName} (Effective {balance})"
+                                values={{ assetName: asset ? asset.name : "",balance: address ? address.balance : 0, }}
                             />
                         </div>
                         <div>
@@ -108,10 +108,9 @@ const SendTabPage = ({
                         {/* <p>全部交易费用: 0.00025 HC </p> */}
 
                         <p>
-                            <T id="omni.send.tips.AvailableAddress" m="From available address: {balance} {assetName}"
+                            <T id="omni.send.tips.AvailableAddress" m="From available address: {address}"
                                 values={{
-                                    balance: address ? address.balance : 0,
-                                    assetName: asset ? asset.name : ""
+                                    address: address ? address.address : ""
                                 }} />
                         </p>
 
@@ -148,7 +147,9 @@ const SendTabPage = ({
                                 onCancelModal,
                                 onSubmit,
                                 amount,
-                                name: asset ? asset.name : ""
+                                name: asset ? asset.name : "",
+                                destination,
+                                address: address ? address.address : ""
                             }
                         }
                         />

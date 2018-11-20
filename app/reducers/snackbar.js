@@ -31,7 +31,7 @@ import {
 } from "../actions/ClientActions";
 import { SNACKBAR_DISMISS_MESSAGES } from "../actions/SnackbarActions";
 import {OMNISENDISSUANCEFIXED_FAILED,OMNISENDISSUANCEMANAGED_FAILED,OMNISENDCHANGEISSUER_FAILED,
-  OMNISENDGRANT_FAILED,OMNISENDREVOKE_FAILED} from "../actions/OmniActions"
+  OMNISENDGRANT_FAILED,OMNISENDREVOKE_FAILED,OMNISEND_FAILED} from "../actions/OmniActions"
 
 const messages = defineMessages({
   defaultSuccessMessage: {
@@ -230,6 +230,7 @@ export default function snackbar(state = {}, action) {
   case OMNISENDCHANGEISSUER_FAILED:
   case OMNISENDGRANT_FAILED:
   case OMNISENDREVOKE_FAILED:
+  case OMNISEND_FAILED:
     type = "Error";
     message = messages[action.type] || messages.defaultErrorMessage;
     values = { originalError: String(action.error) };

@@ -1,21 +1,23 @@
 import { compose } from "fp";
 import Card from "card";
-import { InputSelect, FloatInput } from "inputs";
+import { InputSelect, FloatInput,AddressInput } from "inputs";
 import { omniIssuanceForm } from "connectors";
 import { FormattedMessage as T } from "react-intl";
 import "style/omniForm.less";
 
 
 class ReleaseDetailForm extends React.PureComponent {
-    componentDidMount = () => {
-        this.props.onAddressChange(this.props.walletAddressBalances[0]);
-    }
+    // componentDidMount = () => {
+    //     this.props.onAddressChange(this.props.walletAddressBalances[0]);
+    // }
     render() {
         const {
             onAddressChange,
             amountError,
             amount,
-            onAmountChange, walletAddressBalances, amountDisabled } = this.props;
+            onAmountChange, walletAddressBalances, amountDisabled,
+            address,
+            addressError } = this.props;
 
         return <Card title={<T id="omni.assets.infoForm.cardTitle.releaseDetails" m="Release details" />}>
             <div className="omni-form-row">
@@ -42,12 +44,22 @@ class ReleaseDetailForm extends React.PureComponent {
                     <div>
                         <T id="omni.assets.infoForm.issueAddress" m="Issue address" />
                     </div>
-                    <div><InputSelect className="send-select-account-input" {...{
+                    <div>
+                        {/* <InputSelect className="send-select-account-input" {...{
                         datas: walletAddressBalances,
                         onChange: onAddressChange,
                         labelKey: "address",
                         valueKey: "address",
-                    }} /></div>
+                    }} /> */} 
+                     <AddressInput 
+                                showErrors={!!addressError}
+                                invalid={!!addressError}
+                                invalidMessage={addressError}
+                                value={address}
+                                className="send-address-hash-to" 
+                                onChange={compose(onAddressChange, e => e.target.value)}
+                            />
+                    </div>
                 </div>
             </div>
 

@@ -91,7 +91,7 @@ const messages=defineMessages({
                     <PubKeyModal  show={showPubKeyModal} onCancelModal={this.onCancelPubKeyModal} addr={addr} pubKey={pubKey}/>
                     </div>
         }else{
-            row = <div class="loading-more-transactions-indicator"> <T id="omni.tables.noData" m="no data" /></div>
+            row = <div className="loading-more-transactions-indicator"> <T id="omni.tables.noData" m="no data" /></div>
         } 
         return row
     }

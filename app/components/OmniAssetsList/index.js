@@ -56,7 +56,7 @@ import { FormattedMessage as T } from "react-intl";
                 }/>
             })
         }else{
-            row = <div class="loading-more-transactions-indicator"> <T id="omni.tables.noData" m="no data" /></div>
+            row = <div className="loading-more-transactions-indicator"> <T id="omni.tables.noData" m="no data" /></div>
         }
 
         return row

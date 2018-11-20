@@ -25,7 +25,9 @@ const IssuanceForm = ({
     router,
     onNextStep,
     amountDisabled,
-    disabled
+    disabled,
+    address,
+            addressError,
 }) => {
     return (
         <div>
@@ -51,7 +53,9 @@ const IssuanceForm = ({
                     amountError,
                     amount,
                     onAmountChange,
-                    amountDisabled
+                    amountDisabled,
+                    address,
+                    addressError,
                 }
             }
             />
