@@ -19,10 +19,10 @@ const AssetsList = ({ listproperties,router }) => (
             {listproperties ? listproperties.map(item => (
                 <div key={item.propertyid}>
                     <div>{item.propertyid}
-                    {/* <a  className="stakepool-link" onClick={()=>{
+                    <a  className="stakepool-link" onClick={()=>{
                         router.push({pathname:`/omni/assets/manage/${item.propertyid}`,
                         query:item.detail})
-                    }}> (Manage) </a> */}
+                    }}> (Manage) </a>
                     </div>
                     <div><a className="stakepool-link" onClick={()=>{
                         router.push({pathname:`/omni/assets/details/${item.propertyid}`,
