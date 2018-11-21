@@ -34,10 +34,10 @@ class OverviewPage extends React.PureComponent {
         text: this.props.intl.formatMessage(messages.assetsTypeToIssueKey),
         value: 'issue'
     }
-        // , {
-        //     text: this.props.intl.formatMessage(messages.assetsTypeToCrowdsaleKey),
-        //     value: 'crowdsale'
-        // }
+        , {
+        text: this.props.intl.formatMessage(messages.assetsTypeToCrowdsaleKey),
+        value: 'crowdsale'
+    }
         , {
         text: this.props.intl.formatMessage(messages.assetsTypeToManagedKey),
         value: 'managed'

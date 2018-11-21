@@ -5396,6 +5396,89 @@ msgctxt "omni.managePage.modal.tips"
 msgid "Warning: you are transferring ownership and control of your property. This operation cannot be undone. Please check the new address carefully!"
 msgstr "警告：您正在转让您财产的所有权和控制权。 此操作无法撤消。 请仔细检查新地址！"
 
+#. [omni.crowdsalePage.title]
+#. defaultMessage is:
+#. Initiating crowdfunding
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.crowdsalePage.title"
+msgid "Initiating crowdfunding"
+msgstr "发起众筹"
+
+#. [omni.assets.infoForm.cardTitle.crowdsaleDetails]
+#. defaultMessage is:
+#. Crowdfunding details
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.cardTitle.crowdsaleDetails"
+msgid "Crowdfunding details"
+msgstr "众筹详情"
+
+
+#. [omni.assets.infoForm.deadline]
+#. defaultMessage is:
+#. Deadline
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.deadline"
+msgid "Deadline"
+msgstr "截止日期"
+
+#. [omni.assets.infoForm.issuerPercentage]
+#. defaultMessage is:
+#. Percentage for issuer
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.issuerPercentage"
+msgid "Percentage for issuer"
+msgstr "发行人奖励"
+
+#. [omni.assets.infoForm.earlyBonus]
+#. defaultMessage is:
+#. Weekly early bird bonus percentage
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.earlyBonus"
+msgid "Weekly early bird bonus percentage"
+msgstr "早期参与者的红利"
+
+#. [omni.assets.infoForm.Rates]
+#. defaultMessage is:
+#. Rates
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.Rates"
+msgid "Rates"
+msgstr "价格"
+
+#. [omni.assets.infoForm.selectedCurrency]
+#. defaultMessage is:
+#. Supported currency
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.selectedCurrency"
+msgid "Supported currency"
+msgstr "支持的货币"
+
+#. [omni.assets.infoForm.listPropertiesFirst]
+#. defaultMessage is:
+#. Every
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.listPropertiesFirst"
+msgid "Every"
+msgstr "每个"
+
+#. [omni.assets.infoForm.listPropertiesLast]
+#. defaultMessage is:
+#. investment
+#: app/i18n/extracted/app/messages.json
+msgctxt "omni.assets.infoForm.listPropertiesLast"
+msgid "investment"
+msgstr "投资"
+
+
+
+
+
+
+
+
+
+
+
 
 
 

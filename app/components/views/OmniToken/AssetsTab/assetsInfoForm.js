@@ -166,7 +166,7 @@ class AssetsInfoForm extends React.PureComponent {
                     <div>
                         <Input
                             required={true}
-                            autoFocus={true}
+                            
                             showErrors={!!urlError}
                             invalid={!!urlError}
                             invalidMessage={urlError}

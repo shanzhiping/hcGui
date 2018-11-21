@@ -15,5 +15,6 @@
     sendchangeissuer:"omni_sendchangeissuer",
     sendgrant:"omni_sendgrant",
     sendrevoke:"omni_sendrevoke",
+    sendissuancecrowdsale:"omni_sendissuancecrowdsale",
  }
 
