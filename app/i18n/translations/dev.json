@@ -341,7 +341,7 @@
   "omni.myAssets.Field.PropertyId": "PropertyId",
   "omni.myAssets.Field.TotalTokens": "TotalTokens",
   "omni.myAssets.Field.URL": "URL",
-  "omni.myAssets.Type.crowdsale": "Crowd-funding",
+  "omni.myAssets.Type.crowdsale": "Crowd Assets",
   "omni.myAssets.Type.issue": "Intelligent assets",
   "omni.myAssets.Type.managed": "Managed  Assets",
   "omni.myAssetsPage.title": "My Assets",
