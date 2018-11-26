@@ -161,6 +161,10 @@ export function omni_getActiveCrowdsales(omniService){
     return omniService(omniMethod.getactivecrowdsales)
 }
 
+export function omni_getCrowdsale(omniService,params){
+    return omniService(omniMethod.getcrowdsale,objToArray(params));
+}
+
 
 export function omni_getCategories() {
     return categories;

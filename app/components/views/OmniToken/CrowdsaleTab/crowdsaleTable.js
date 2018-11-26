@@ -1,7 +1,7 @@
 import { tsToDate } from "helpers";
 import { FormattedMessage as T } from "react-intl";
 
-const CrowdsaleList = ({ activeCrowdsales }) => (
+const CrowdsaleList = ({ activeCrowdsales,router }) => (
 
     <div className="omni-history-list">
         <div className="omni-history-list-header">
@@ -25,14 +25,19 @@ const CrowdsaleList = ({ activeCrowdsales }) => (
 
             {
                 activeCrowdsales ? activeCrowdsales.map(item => {
-                    return <div >
+                    return <div key={item.propertyid} onClick={() => {
+                        router.push({
+                            pathname: `/omni/crowdsales/details/${item.propertyid}`,
+                            query: item.detail
+                        })
+                    }}>
                         <div>{item.name}</div>
-                        <div>{`${assetsName}(${item.propertyiddesired})/Rate(${tokensperunit})`}</div>
+                        <div>{`${item.assetsName}(${item.propertyiddesired}) / Rate(${item.tokensperunit})`}</div>
                         <div><T id="transaction.timestamp"
                             m="{timestamp, date, medium} {timestamp, time, medium}"
-                            values={{ timestamp: tsToDate(item.blocktime) }} /></div>
-                        <div>0.00000000</div>
-                        <div>0.00000000</div>
+                            values={{ timestamp: tsToDate(item.deadline) }} /></div>
+                        <div>{item.detail.amountraised}</div>
+                        <div>{item.detail.tokensissued}</div>
                     </div>
                 }) : null
             }

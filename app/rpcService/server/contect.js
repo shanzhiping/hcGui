@@ -15,6 +15,7 @@
     sendgrant:"omni_sendgrant",
     sendrevoke:"omni_sendrevoke",
     sendissuancecrowdsale:"omni_sendissuancecrowdsale",
-    getactivecrowdsales:"omni_getactivecrowdsales"
+    getactivecrowdsales:"omni_getactivecrowdsales",
+    getcrowdsale:"omni_getcrowdsale",
  }
 

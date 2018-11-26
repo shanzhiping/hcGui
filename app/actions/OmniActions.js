@@ -4,7 +4,7 @@ import { getOmnitService } from '../rpcService/rpc';
 import {
   omni_listProperties, omni_getWalletAddressBalances, omni_send, omni_getTransaction,
   omni_getTradeHistoryForAddress, omni_getCategories, omni_listTransactions, omni_sendIssuanceFixed, omni_sendIssuanceManaged, omni_getProperty,
-  omni_sendChangeIssuer, omni_sendGrant, omni_sendRevoke, omni_sendIssuanceCrowdsale, omni_getActiveCrowdsales
+  omni_sendChangeIssuer, omni_sendGrant, omni_sendRevoke, omni_sendIssuanceCrowdsale, omni_getActiveCrowdsales, omni_getCrowdsale
 } from '../rpcService/server';
 
 
@@ -288,13 +288,23 @@ export const getActiveCrowdsales_func = () => async (dispatch, getState) => {
   try {
     const { omniService } = getState().rpc;
     let activeCrowdsales = await omni_getActiveCrowdsales(omniService);
-    activeCrowdsales = activeCrowdsales.map(item => {
-      const listproperties= sel.listproperties(getState()); 
+
+
+    let index = 0;
+    while (index < activeCrowdsales.length) {
+      const item =activeCrowdsales[index];
+      const listproperties = sel.listproperties(getState());
       const property = listproperties ? listproperties.find(p => p.propertyid == item.propertyiddesired) : null;
       item.assetsName = property ? property.name : "";
-      return item;
-    })
 
+
+      const crowdsales = await omni_getCrowdsale(omniService, { propertyid: item.propertyid });
+      item.detail = crowdsales;
+
+      index++;
+
+    } 
+    
     dispatch({ type: OMNIGETACTIVECROWDSALES_SUCCESS, activeCrowdsales })
   } catch (error) {
     console.error(error, ' getActiveCrowdsales_func  error ')
